@@ -3,8 +3,8 @@
 ## Subsystems
 
 Drivetrain
--TeleopDrive
--DriveDistance
+- TeleopDrive
+- DriveDistance
 
 HatchDeployer
--Deploy
+- Deploy
