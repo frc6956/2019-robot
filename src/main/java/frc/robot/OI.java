@@ -7,18 +7,121 @@
 
 package frc.robot;
 
+
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI {
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
+public class OI 
+{
+  private boolean isTank = false;
+  private boolean isSplit = false;
+  private boolean isJoystick = false;
+
+  private XboxController driver = new XboxController(RobotMap.driverController);
+  private XboxController xboxc1 = new XboxController(0);
+  private XboxController operator = new XboxController(RobotMap.operatorController);
+  private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
+  private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
+
+  public double getTankLeft()
+  {
+    if(isJoystick)
+    {
+      return -driverLeft.getY();
+    }
+    return -driver.getY(Hand.kLeft);
+  }
+
+  public double getTankRight()
+  {
+    if(isJoystick)
+    {
+      return -driverRight.getY();
+    }
+    return -driver.getY(Hand.kRight);
+  }
+
+  public double getArcadeY()
+  {
+    if(!isSplit && !isJoystick)
+    {
+    return -driver.getY(Hand.kLeft);
+    }
+    else if(isJoystick)
+    {
+      return -driverRight.getY();
+    }
+    else
+    {
+      return -driver.getY(Hand.kRight);
+    }
+  }
+
+  public double getArcadeX()
+  {
+    if(isSplit && isJoystick)
+    {
+      return driverLeft.getX();
+    }
+    else if(isJoystick)
+    {
+      return driverRight.getX();
+    }
+    return driver.getX(Hand.kLeft);
+  }
+
+  public boolean getIsTank()
+  {
+    if(xboxc1.getXButtonReleased())
+    {
+      isTank=true;
+      isSplit=false;
+      isJoystick = false;
+    }
+    if(xboxc1.getYButtonReleased())
+    {
+      isTank=false;
+      isSplit=false;
+      isJoystick = false;
+    }
+    if(xboxc1.getBButtonReleased())
+    {
+      isTank=false;
+      isSplit=true;
+      isJoystick = false;
+    }
+    if(driverRight.getRawButtonReleased(5))
+    {
+      isTank=true;
+      isSplit=false;
+      isJoystick=true;
+    }
+    if(driverRight.getRawButtonReleased(4))
+    {
+      isTank=false;
+      isSplit=true;
+      isJoystick=true;
+    }
+    if(driverRight.getRawButtonReleased(6))
+    {
+      isTank=false;
+      isSplit=false;
+      isJoystick=true;
+    }
+    return isTank;
+  }
+
+  public boolean getIsJoystick()
+  {
+    return isJoystick;
+  }
+  
+  
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
