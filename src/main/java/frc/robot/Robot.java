@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
@@ -25,7 +26,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+  public static DigitalInput lineSensor = new DigitalInput(RobotMap.lineSensor);
   public static OI m_oi;
 
   public static final Drivetrain drivetrain = new Drivetrain();
@@ -57,6 +58,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    sendLineSensor();
   }
 
   /**
@@ -133,5 +135,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+  }
+  //
+  public void sendLineSensor() {
+    SmartDashboard.putBoolean("On Line?", LineSensors.getIsOnLine());
   }
 }

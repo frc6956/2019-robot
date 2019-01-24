@@ -23,6 +23,8 @@ public class RobotMap
   //CAN
   public static final int leftDriveMotor = 0;
   public static final int rightDriveMotor = 1;
+  // Roborio map
+  public static final int lineSensor = 0;
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
