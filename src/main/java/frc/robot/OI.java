@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -16,10 +15,13 @@ import edu.wpi.first.wpilibj.XboxController;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-public class OI 
-{
+public class OI {
+  // if is tank is false use arcade
   private boolean isTank = false;
+  // if arcade enabled and this is true split X and Y
   private boolean isSplit = false;
+  // if a joystick button has been pressed this will become true
+  // if false xbox controller is enabled
   private boolean isJoystick = false;
 
   private XboxController driver = new XboxController(RobotMap.driverController);
@@ -28,100 +30,95 @@ public class OI
   private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
   private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
 
-  public double getTankLeft()
-  {
-    if(isJoystick)
-    {
+  public double getTankLeft() {
+    if (isJoystick) {
+      // Left joystick Y
       return -driverLeft.getY();
     }
+    // Left xbox joystick Y
     return -driver.getY(Hand.kLeft);
   }
 
-  public double getTankRight()
-  {
-    if(isJoystick)
-    {
+  public double getTankRight() {
+      
+    if (isJoystick) {
+      // Right Joystick Y
       return -driverRight.getY();
     }
+    // Right xbox joystick Y
     return -driver.getY(Hand.kRight);
   }
 
-  public double getArcadeY()
-  {
-    if(!isSplit && !isJoystick)
-    {
-    return -driver.getY(Hand.kLeft);
-    }
-    else if(isJoystick)
-    {
+  public double getArcadeY() {
+    if (!isSplit && !isJoystick) {
+      // left Joystick Y
+      return -driver.getY(Hand.kLeft);
+    } else if (isJoystick) {
+      // Right Joystick Y
       return -driverRight.getY();
-    }
-    else
-    {
+    } else {
+      // right xbox Joystick Y
       return -driver.getY(Hand.kRight);
     }
   }
 
-  public double getArcadeX()
-  {
-    if(isSplit && isJoystick)
-    {
+  public double getArcadeX() {
+    if (isSplit && isJoystick) {
+      // right xbox Joystick X
       return driverLeft.getX();
-    }
-    else if(isJoystick)
-    {
+    } else if (isJoystick) {   
+      // right Joystick X   
       return driverRight.getX();
     }
+    // left xbox Joystick X
     return driver.getX(Hand.kLeft);
   }
 
-  public boolean getIsTank()
-  {
-    if(xboxc1.getXButtonReleased())
-    {
-      isTank=true;
-      isSplit=false;
+  public boolean getIsTank() {
+    // xbox buttons
+    // xbox tank drive
+    if (xboxc1.getXButtonReleased()) {
+      isTank = true;
+      isSplit = false;
       isJoystick = false;
     }
-    if(xboxc1.getYButtonReleased())
-    {
-      isTank=false;
-      isSplit=false;
+    // xbox arcade drive
+    if (xboxc1.getYButtonReleased()) {
+      isTank = false;
+      isSplit = false;
       isJoystick = false;
     }
-    if(xboxc1.getBButtonReleased())
-    {
-      isTank=false;
-      isSplit=true;
+    // xbox split arcade drive
+    if (xboxc1.getBButtonReleased()) {
+      isTank = false;
+      isSplit = true;
       isJoystick = false;
     }
-    if(driverRight.getRawButtonReleased(5))
-    {
-      isTank=true;
-      isSplit=false;
-      isJoystick=true;
+    // Joystick buttons
+    // Joystick Tank drive
+    if (driverRight.getRawButtonReleased(5)) {
+      isTank = true;
+      isSplit = false;
+      isJoystick = true;
     }
-    if(driverRight.getRawButtonReleased(4))
-    {
-      isTank=false;
-      isSplit=true;
-      isJoystick=true;
+    // Joystick Split arcade
+    if (driverRight.getRawButtonReleased(4)) {
+      isTank = false;
+      isSplit = true;
+      isJoystick = true;
     }
-    if(driverRight.getRawButtonReleased(6))
-    {
-      isTank=false;
-      isSplit=false;
-      isJoystick=true;
+    // Joystick arcade
+    if (driverRight.getRawButtonReleased(6)) {
+      isTank = false;
+      isSplit = false;
+      isJoystick = true;
     }
     return isTank;
   }
 
-  public boolean getIsJoystick()
-  {
+  public boolean getIsJoystick() {
     return isJoystick;
   }
-  
-  
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to

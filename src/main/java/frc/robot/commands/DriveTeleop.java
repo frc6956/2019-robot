@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Robot;
 
-
 public class DriveTeleop extends Command {
   public DriveTeleop() {
     // Use requires() here to declare subsystem dependencies
@@ -27,34 +26,25 @@ public class DriveTeleop extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(!Robot.m_oi.getIsJoystick())
-    {
-    if(Robot.m_oi.getIsTank())
-    {
-      Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight()); // tank
+    if (!Robot.m_oi.getIsJoystick()) {
+      if (Robot.m_oi.getIsTank()) {
+        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight()); // tank
+      } else {
+        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX()); // arcade
+      }
+    } else {
+      if (Robot.m_oi.getIsTank()) {
+        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight());
+      } else {
+        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX());
+      }
     }
-    else
-    {
-      Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX()); // arcade
-    }
-   }
-   else
-   {
-    if(Robot.m_oi.getIsTank())
-    {
-      Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight());
-    }
-    else
-    {
-      Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX());
-    }
-   }
   }
 
   // Make this return true when this Command no longer needs to run execute()
