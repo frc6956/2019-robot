@@ -25,8 +25,6 @@ public class OI {
   private boolean isJoystick = false;
 
   private XboxController driver = new XboxController(RobotMap.driverController);
-  private XboxController xboxc1 = new XboxController(0);
-  private XboxController operator = new XboxController(RobotMap.operatorController);
   private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
   private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
 
@@ -77,19 +75,19 @@ public class OI {
   public boolean getIsTank() {
     // xbox buttons
     // xbox tank drive
-    if (xboxc1.getXButtonReleased()) {
+    if (driver.getXButtonReleased()) {
       isTank = true;
       isSplit = false;
       isJoystick = false;
     }
     // xbox arcade drive
-    if (xboxc1.getYButtonReleased()) {
+    if (driver.getYButtonReleased()) {
       isTank = false;
       isSplit = false;
       isJoystick = false;
     }
     // xbox split arcade drive
-    if (xboxc1.getBButtonReleased()) {
+    if (driver.getBButtonReleased()) {
       isTank = false;
       isSplit = true;
       isJoystick = false;
