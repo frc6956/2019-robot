@@ -1,7 +1,9 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+
 public class LineSensors {
-    public static boolean getIsOnLine() {
-        return Robot.lineSensor.get();
+    public static boolean getIsOnLine(DigitalInput lineSensor) {
+        return lineSensor.get();
     }
 }

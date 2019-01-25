@@ -31,7 +31,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DigitalInput lineSensor = new DigitalInput(RobotMap.lineSensor);
+  public static DigitalInput lineSensorOne = new DigitalInput(RobotMap.lineSensorOne);
   public static OI m_oi;
 
   public static Drivetrain drivetrain = new Drivetrain();
@@ -145,6 +145,6 @@ public class Robot extends TimedRobot {
   }
   //
   public void sendLineSensor() {
-    SmartDashboard.putBoolean("On Line?", LineSensors.getIsOnLine());
+    SmartDashboard.putBoolean("On Line?", LineSensors.getIsOnLine(lineSensorOne));
   }
 }
