@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+
+
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -31,7 +33,8 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
 
   public static Drivetrain drivetrain = new Drivetrain();
-
+  //add the Navigation file for Gyro
+ // public static Gyro gyro = new Navigation(); 
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -136,9 +139,5 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-  }
-
-  public void sendLineSensor() {
-    SmartDashboard.putBoolean("On Line?", LineSensors.getIsOnLine());
   }
 }

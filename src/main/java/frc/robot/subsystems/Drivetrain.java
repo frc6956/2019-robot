@@ -7,19 +7,29 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.RobotMap;
 import frc.robot.commands.TeleopDrive;
 
 /**
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+ // needs ticsPerInch
   private double speedLimit = 1.0;
+  double zeroDistance;
 
-//Put Motors Here
-  
+  VictorSP m_leftSP = new VictorSP(RobotMap.leftDriveMotor);
+  SpeedControllerGroup m_left = new SpeedControllerGroup(m_leftSP);
+
+  VictorSP m_rightSP = new VictorSP(RobotMap.rightDriveMotor);
+  SpeedControllerGroup m_right = new SpeedControllerGroup(m_rightSP);
+
+  DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -27,17 +37,11 @@ public class Drivetrain extends Subsystem {
     setDefaultCommand(new TeleopDrive());
   }
 
-public void setTankDrive(double left_Power, double right_Power) {
+  public void setTankDrive(double left_Power, double right_Power) {
     m_drive.tankDrive(left_Power * speedLimit, right_Power * speedLimit);
-}
+  }
 
-public void setArcadeDrive(double xSpeed, double zRotation) {
-  m_drive.arcadeDrive(xSpeed * speedLimit, zRotation * speedLimit);
-}
-
-public void setSplitArcade(double yThrottle, double rotate) {
-  m_drive.splitArcade(yThrottle * speedLimit, rotate * speedLimit);
-}
-
-
+  public void setArcadeDrive(double xSpeed, double zRotation) {
+    m_drive.arcadeDrive(xSpeed * speedLimit, zRotation * speedLimit);
+  }
 }

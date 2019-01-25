@@ -25,7 +25,7 @@ public class TurnAngle extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.gyro.reset();
+    //Robot.gyro.reset();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -43,7 +43,8 @@ public class TurnAngle extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Math.abs(Robot.gyro.getAngle()) >= Math.abs(desiredAngle);
+    //return Math.abs(Robot.gyro.getAngle()) >= Math.abs(desiredAngle);
+    return true;
   }
 
   // Called once after isFinished returns true
