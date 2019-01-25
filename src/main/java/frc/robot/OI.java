@@ -38,7 +38,7 @@ public class OI {
   }
 
   public double getTankRight() {
-
+      
     if (isJoystick) {
       // Right Joystick Y
       return -driverRight.getY();
@@ -64,8 +64,8 @@ public class OI {
     if (isSplit && isJoystick) {
       // right xbox Joystick X
       return driverLeft.getX();
-    } else if (isJoystick) {
-      // right Joystick X
+    } else if (isJoystick) {   
+      // right Joystick X   
       return driverRight.getX();
     }
     // left xbox Joystick X
@@ -117,13 +117,6 @@ public class OI {
   public boolean getIsJoystick() {
     return isJoystick;
   }
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to

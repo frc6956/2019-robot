@@ -18,17 +18,18 @@ import frc.robot.commands.TeleopDrive;
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
- // needs ticsPerInch
-  private double speedLimit = 1.0;
-  double zeroDistance;
+        private double speedLimit = 0.8;
+        VictorSP m_leftSP = new VictorSP(RobotMap.leftDriveMotor);
+        SpeedControllerGroup m_left = new SpeedControllerGroup(m_leftSP);
 
-  VictorSP m_leftSP = new VictorSP(RobotMap.leftDriveMotor);
-  SpeedControllerGroup m_left = new SpeedControllerGroup(m_leftSP);
+        VictorSP m_rightSP = new VictorSP(RobotMap.rightDriveMotor);
+        SpeedControllerGroup m_right = new SpeedControllerGroup(m_rightSP);
 
-  VictorSP m_rightSP = new VictorSP(RobotMap.rightDriveMotor);
-  SpeedControllerGroup m_right = new SpeedControllerGroup(m_rightSP);
+        DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
 
-  DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+        public Drivetrain(){}
+  // Put methods for controlling this subsystem/
+  // here. Call these from Commands.
 
   @Override
   public void initDefaultCommand() {

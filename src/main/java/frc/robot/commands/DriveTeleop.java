@@ -8,55 +8,54 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import frc.robot.Robot;
 
-public class DriveDistance extends Command {
-
-  double desiredDistance;
-
-  public DriveDistance(double distance) {
+public class DriveTeleop extends Command {
+  public DriveTeleop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    desiredDistance = distance;
     requires(Robot.drivetrain);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    //Robot.drivetrain.resetDistanceTravelled();
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrain.setTankDrive(0.5, 0.5);
+    if (!Robot.m_oi.getIsJoystick()) {
+      if (Robot.m_oi.getIsTank()) {
+        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight()); // tank
+      } else {
+        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX()); // arcade
+      }
+    } else {
+      if (Robot.m_oi.getIsTank()) {
+        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight());
+      } else {
+        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX());
+      }
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
- /*   if (Robot.drivetrain.getDistanceTravelled() > desiredDistance) {
-      return true;
-    } else {
-      return false;
-    }
-    */
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drivetrain.setTankDrive(0, 0);
   }
-
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
-  
 }
