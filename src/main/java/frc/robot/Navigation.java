@@ -16,7 +16,7 @@ public class Navigation implements Gyro {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	@Override
 	public void reset() {
 		// TODO Auto-generated method stub

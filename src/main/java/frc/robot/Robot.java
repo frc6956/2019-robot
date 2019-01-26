@@ -43,7 +43,6 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
 
   public static Drivetrain drivetrain = new Drivetrain();
-  //add the Navigation file for Gyro
   public static final Gyro gyro = new Navigation();
 
   Command m_autonomousCommand;
