@@ -1,6 +1,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.sensors.PigeonIMU;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 

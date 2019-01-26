@@ -21,8 +21,15 @@ public class RobotMap {
   public static final int driverControllerLeft = 2;
   public static final int driverControllerRight = 3;
   //CAN
-  public static final int leftDriveMotor = 0;
+  //Charlie
+ // public static final int leftDriveMotor = 0;
+//  public static final int rightDriveMotor = 1;
+
+//Tempest
   public static final int rightDriveMotor = 1;
+	public static final int leftDriveMotor = 2;
+	public static final int rightDriveMotor2 = 1;
+	public static final int leftDriveMotor2 = 2;
   // Roborio map of Digital Inputs
   public static final int lineSensorZero = 0;
   public static final int lineSensorOne = 1;
