@@ -23,11 +23,19 @@ public class RobotMap {
   //CAN
   public static final int leftDriveMotor = 0;
   public static final int rightDriveMotor = 1;
-  // Roborio map
-  public static final int lineSensor = 0;
+  // Roborio map of Digital Inputs
+  public static final int lineSensorZero = 0;
+  public static final int lineSensorOne = 1;
+  public static final int lineSensorTwo = 2;
+  public static final int lineSensorThree = 3;
+  public static final int lineSensorFour = 4;
+  public static final int lineSensorFive = 5;
+  public static final int lineSensorSix = 6;
+  public static final int lineSensorSeven = 7;
+  public static final int lineSensorEight = 8;
   //Analog Ports
  // public static final int potentiometer = 0;
- // public static final int gyro = 1;
+  public static final int gyro = 1;
   
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
