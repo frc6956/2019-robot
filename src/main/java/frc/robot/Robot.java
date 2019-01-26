@@ -31,12 +31,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DigitalInput lineSensorZero = new DigitalInput(RobotMap.lineSensorZero);
-  public static DigitalInput lineSensorOne = new DigitalInput(RobotMap.lineSensorOne);
+  public static DigitalInput lineSensorLeft = new DigitalInput(RobotMap.lineSensorLeft);
+  public static DigitalInput lineSensorRight = new DigitalInput(RobotMap.lineSensorRight);
   public static OI m_oi;
 
   public static Drivetrain drivetrain = new Drivetrain();
-  public static final Gyro gyro = new Navigation();
+  public static final Gyro gyro = new GyroPidgeon();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -145,9 +145,10 @@ public class Robot extends TimedRobot {
   }
   //
   public void sendLineSensor() {
-    boolean LnSensors[] = new boolean[2];
-      LnSensors[0] = LineSensors.getIsOnLine(lineSensorZero);
-      LnSensors[1] = LineSensors.getIsOnLine(lineSensorOne);
+    boolean LnSensors[] = new boolean[3];
+      LnSensors[0] = LineSensors.getIsLeft(lineSensorRight, lineSensorLeft);
+      LnSensors[1] = LineSensors.getIsOnTarget(lineSensorRight, lineSensorLeft);
+      LnSensors[2] = LineSensors.getIsRight(lineSensorRight, lineSensorLeft);
     SmartDashboard.getBooleanArray("On Line?", LnSensors);
   }
 }
