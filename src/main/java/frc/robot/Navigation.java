@@ -4,12 +4,11 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-public class Navigation<PigeonIMU> implements Gyro {
+public class Navigation implements Gyro {
 
-	private PigeonIMU pigeon;
+	private PigeonIMU pigeon = new PigeonIMU(0);;
 	double zeroAngle;
 	public Navigation() {
-		pigeon = new PigeonIMU(0);
 		reset();
 	}
 	@Override
