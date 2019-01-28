@@ -31,19 +31,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DigitalInput lineSensorZero = new DigitalInput(RobotMap.lineSensorZero);
-  public static DigitalInput lineSensorOne = new DigitalInput(RobotMap.lineSensorOne);
-  public static DigitalInput lineSensorTwo = new DigitalInput(RobotMap.lineSensorTwo);
-  public static DigitalInput lineSensorThree = new DigitalInput(RobotMap.lineSensorThree);
-  public static DigitalInput lineSensorFour = new DigitalInput(RobotMap.lineSensorFour);
-  public static DigitalInput lineSensorFive = new DigitalInput(RobotMap.lineSensorFive);
-  public static DigitalInput lineSensorSix = new DigitalInput(RobotMap.lineSensorSix);
-  public static DigitalInput lineSensorSeven = new DigitalInput(RobotMap.lineSensorSeven);
-  public static DigitalInput lineSensorEight = new DigitalInput(RobotMap.lineSensorEight);
+ // public static DigitalInput lineSensorLeft = new DigitalInput(RobotMap.lineSensorLeft);
+  //public static DigitalInput lineSensorRight = new DigitalInput(RobotMap.lineSensorRight);
+  public LineSensors lineSensors = new LineSensors();
   public static OI m_oi;
 
   public static Drivetrain drivetrain = new Drivetrain();
-  public static final Gyro gyro = new Navigation();
+  public static final Gyro gyro = new GyroPidgeon();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -123,6 +117,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+
   }
 
   @Override
@@ -152,16 +147,10 @@ public class Robot extends TimedRobot {
   }
   //
   public void sendLineSensor() {
-    boolean LnSensors[] = new boolean[9];
-      LnSensors[0] = LineSensors.getIsOnLine(lineSensorZero);
-      LnSensors[1] = LineSensors.getIsOnLine(lineSensorOne);
-      LnSensors[2] = LineSensors.getIsOnLine(lineSensorTwo);
-      LnSensors[3] = LineSensors.getIsOnLine(lineSensorThree);
-      LnSensors[4] = LineSensors.getIsOnLine(lineSensorFour);
-      LnSensors[5] = LineSensors.getIsOnLine(lineSensorFive);
-      LnSensors[6] = LineSensors.getIsOnLine(lineSensorSix);
-      LnSensors[7] = LineSensors.getIsOnLine(lineSensorSeven);
-      LnSensors[8] = LineSensors.getIsOnLine(lineSensorEight);
+    boolean LnSensors[] = new boolean[3];
+      LnSensors[0] = lineSensors.getIsLeft();
+      LnSensors[1] = lineSensors.getIsOnTarget();
+      LnSensors[2] = lineSensors.getIsRight();
     SmartDashboard.getBooleanArray("On Line?", LnSensors);
   }
 }
