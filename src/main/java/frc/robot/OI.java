@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.PWMSpeedController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -113,6 +114,20 @@ public class OI {
     }
     return isTank;
   }
+
+  public void AutoCenter() {
+    if (driver.getAButtonPressed()) {
+      AutoCenter();
+    }
+  }
+
+  public void InvertDrive() {
+    if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
+        Robot.SwitchDrive();
+    }
+  }
+
+  
 
   public boolean getIsJoystick() {
     return isJoystick;

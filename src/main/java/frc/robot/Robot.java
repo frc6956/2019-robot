@@ -146,6 +146,10 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
   //
+  public static void SwitchDrive() {
+    drivetrain.m_rightSPX.setInverted(!drivetrain.m_rightSPX.getInverted());
+    drivetrain.m_leftSPX.setInverted(!drivetrain.m_leftSPX.getInverted());
+  }
   public void sendLineSensor() {
     boolean LnSensors[] = new boolean[3];
       LnSensors[0] = lineSensors.getIsLeft();

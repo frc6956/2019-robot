@@ -35,11 +35,11 @@ public class Drivetrain extends Subsystem {
 
   // Tempest
   WPI_TalonSRX m_leftSRX = new WPI_TalonSRX(RobotMap.leftDriveMotor);
-  WPI_VictorSPX m_leftSPX = new WPI_VictorSPX(RobotMap.leftDriveMotor2);
+  public WPI_VictorSPX m_leftSPX = new WPI_VictorSPX(RobotMap.leftDriveMotor2);
   SpeedControllerGroup m_left = new SpeedControllerGroup(m_leftSRX, m_leftSPX);
 
   WPI_TalonSRX m_rightSRX = new WPI_TalonSRX(RobotMap.rightDriveMotor);
-  WPI_VictorSPX m_rightSPX = new WPI_VictorSPX(RobotMap.rightDriveMotor2);
+  public WPI_VictorSPX m_rightSPX = new WPI_VictorSPX(RobotMap.rightDriveMotor2);
   SpeedControllerGroup m_right = new SpeedControllerGroup(m_rightSRX, m_rightSPX);
 
   DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
@@ -71,7 +71,9 @@ public class Drivetrain extends Subsystem {
 		double total = m_leftSRX.getSelectedSensorPosition(0) / ticksPerInch;
 		total += m_rightSRX.getSelectedSensorPosition(0) / ticksPerInch;
 		return(total/2);
-	}
+  }
+  
+
 	
 	public void resetDistanceTravelled() {
 		zeroDistance = getRawDistanceTravelled();
