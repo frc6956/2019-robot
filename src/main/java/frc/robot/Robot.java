@@ -37,7 +37,8 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
 
   public static Drivetrain drivetrain = new Drivetrain();
-  public static final Gyro gyro = new GyroPidgeon();
+  public static  Gyro gyro = new GyroPidgeon();
+  public static LineSensors lnSensors = new LineSensors();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

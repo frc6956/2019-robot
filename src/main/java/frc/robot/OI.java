@@ -39,7 +39,7 @@ public class OI {
   }
 
   public double getTankRight() {
-      
+
     if (isJoystick) {
       // Right Joystick Y
       return -driverRight.getY();
@@ -65,8 +65,8 @@ public class OI {
     if (isSplit && isJoystick) {
       // right xbox Joystick X
       return driverLeft.getX();
-    } else if (isJoystick) {   
-      // right Joystick X   
+    } else if (isJoystick) {
+      // right Joystick X
       return driverRight.getX();
     }
     // left xbox Joystick X
@@ -132,6 +132,7 @@ public class OI {
   public boolean getIsJoystick() {
     return isJoystick;
   }
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
