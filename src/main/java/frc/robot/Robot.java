@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -14,14 +16,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.DigitalInput;
-import frc.robot.commands.DriveDistance;
-import frc.robot.subsystems.Drivetrain;
-
-import edu.wpi.first.wpilibj.IterativeRobot;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,11 +31,13 @@ public class Robot extends TimedRobot {
  // public static DigitalInput lineSensorLeft = new DigitalInput(RobotMap.lineSensorLeft);
   //public static DigitalInput lineSensorRight = new DigitalInput(RobotMap.lineSensorRight);
   public LineSensors lineSensors = new LineSensors();
-  public static OI m_oi;
-
+  public static OI m_oi = new OI();
   public static Drivetrain drivetrain = new Drivetrain();
-  public static  Gyro gyro = new GyroPidgeon();
+  public static Gyro gyro = new GyroPidgeon();
   public static LineSensors lnSensors = new LineSensors();
+  public static Arduino arduino = new Arduino();
+  public static PowerDistributionPanel pdp = new PowerDistributionPanel();
+  public static Compressor compressor = new Compressor();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -49,12 +48,15 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_oi = new OI();
     m_chooser.setDefaultOption("Drive Distance", new DriveDistance(60));
     m_chooser.addOption("Do nothing", null);
 
     SmartDashboard.putData("Auto mode", m_chooser);
+
     CameraServer.getInstance().startAutomaticCapture();
+
+    pdp.clearStickyFaults();
+    compressor.clearAllPCMStickyFaults();
   }
 
   /**
