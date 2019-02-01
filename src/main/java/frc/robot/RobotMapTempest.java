@@ -13,15 +13,10 @@ package frc.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-public class RobotMap {
-  
-  //USB
-  public static final int driverController = 0;
-  public static final int operatorController = 1;
-  public static final int driverControllerLeft = 2;
-  public static final int driverControllerRight = 3;
-
-  // Roborio map of Digital Inputs
-  public static final int lineSensorRight = 0;
-  public static final int lineSensorLeft = 1;
+public class RobotMapTempest extends RobotMap {
+  // CAN IDs
+  public static final int rightDriveMotor = 1;
+	public static final int leftDriveMotor = 2;
+	public static final int rightDriveMotor2 = 1;
+	public static final int leftDriveMotor2 = 2;
 }

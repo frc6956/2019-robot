@@ -28,11 +28,9 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
- // public static DigitalInput lineSensorLeft = new DigitalInput(RobotMap.lineSensorLeft);
-  //public static DigitalInput lineSensorRight = new DigitalInput(RobotMap.lineSensorRight);
   public LineSensors lineSensors = new LineSensors();
   public static OI m_oi = new OI();
-  public static Drivetrain drivetrain = new Drivetrain();
+  public static Drivetrain drivetrain = new DrivetrainTempest();
   public static Gyro gyro = new GyroPidgeon();
   public static LineSensors lnSensors = new LineSensors();
   public static Arduino arduino = new Arduino();
@@ -150,8 +148,7 @@ public class Robot extends TimedRobot {
   }
   //
   public static void SwitchDrive() {
-    drivetrain.m_rightSPX.setInverted(!drivetrain.m_rightSPX.getInverted());
-    drivetrain.m_leftSPX.setInverted(!drivetrain.m_leftSPX.getInverted());
+    drivetrain.reverse(!drivetrain.isReversed());
   }
   public void sendLineSensor() {
     boolean LnSensors[] = new boolean[3];
