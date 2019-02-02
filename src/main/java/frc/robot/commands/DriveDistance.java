@@ -13,6 +13,7 @@ import frc.robot.Robot;
 public class DriveDistance extends Command {
 
   double desiredDistance;
+  double initAngle;
 
   public DriveDistance(double distance) {
     // Use requires() here to declare subsystem dependencies
@@ -24,13 +25,20 @@ public class DriveDistance extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    initAngle = Robot.gyro.getAngle();
     Robot.drivetrain.resetDistanceTravelled();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.drivetrain.setTankDrive(0.5, 0.5);
+    double left = 0.5, right = 0.5, currentAngle = Robot.gyro.getAngle();
+	if (currentAngle < initAngle) {
+		left += 0.2;
+	} else if (currentAngle > initAngle) {
+		right += 0.2;
+	}
+    Robot.drivetrain.setTankDrive(left, right);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -52,4 +52,4 @@ Driver
 - Thou shalt placeth a space on either side of all logic operators.
 - Thou shalt placeth a blank line between two sets of unrelated code (for example, between method declarations).
 - When commenting, thou shalt placeth the comment one line above the code thou art commenting about.
-- Thou shalt indenteth using tabs, and thy editor's tab size shall be 4. If thou dost not obey this rule, thou shalt be shunned as if thou art a spider and the team is collectively dear old Miss Muffet herself.
+- Thou shalt indenteth using spaces, and thy editor's space count shall be 4. If thou dost not obey this rule, thou shalt be shunned as if thou art a spider and the team is collectively dear old Miss Muffet herself.
