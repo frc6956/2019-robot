@@ -121,11 +121,15 @@ public class OI {
     }
   }
 
-  public void InvertDrive() {
+  public boolean InvertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
-        Robot.SwitchDrive();
+        return true;
+    }   
+    else {
+        return false;
     }
   }
+  
 
   
 

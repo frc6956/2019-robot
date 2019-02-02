@@ -160,10 +160,7 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
-  //
-  public static void SwitchDrive() {
-    drivetrain.reverse(!drivetrain.isReversed());
-  }
+  
   public void sendLineSensor() {
     boolean LnSensors[] = new boolean[3];
       LnSensors[0] = lineSensors.getIsLeft();
