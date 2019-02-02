@@ -20,7 +20,7 @@ import frc.robot.RobotMapTempest;
  */
 public class DrivetrainTempest extends Drivetrain {
   // calculate ticsPerInch
-  private final double ticksPerInch = 4096 / (4 * Math.PI);
+  private final double ticksPerInch = 4096 / (6 * Math.PI);
 
   private WPI_TalonSRX m_leftSRX;
   private WPI_VictorSPX m_leftSPX;
