@@ -15,4 +15,7 @@ public class LineSensors {
     public boolean getIsRight() {
         return left.get() && !right.get();
     }
+    public boolean notOnTarget() {
+        return !left.get() && !right.get();
+    }
 }
