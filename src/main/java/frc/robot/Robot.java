@@ -28,13 +28,12 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public String name = "Tempest";
+  public String name = "Charlie";
 
-  public LineSensors lineSensors = new LineSensors();
   public static OI m_oi = new OI();
   public static Drivetrain drivetrain;
   public static Gyro gyro;
-  public static LineSensors lnSensors = new LineSensors();
+  public static LineSensors lineSensors = new LineSensors();
   public static Arduino arduino = new Arduino();
   public static PowerDistributionPanel pdp = new PowerDistributionPanel();
   public static Compressor compressor = new Compressor();
