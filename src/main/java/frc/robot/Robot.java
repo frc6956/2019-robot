@@ -80,7 +80,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    sendLineSensor();
+	sendLineSensor();
+	SmartDashboard.putNumber("gyro", gyro.getAngle());
   }
 
   /**
