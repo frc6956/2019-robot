@@ -14,6 +14,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMapTempest;
 
 /**
@@ -45,6 +46,7 @@ public class DrivetrainTempest extends Drivetrain {
     m_drive = new DifferentialDrive(m_left, m_right);
 
     m_leftSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+    m_leftSRX.setSensorPhase(true);
     m_rightSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
   }
 
