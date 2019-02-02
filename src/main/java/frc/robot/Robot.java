@@ -64,6 +64,8 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Do nothing", null);
     SmartDashboard.putData("Auto mode", m_chooser);
 
+    SmartDashboard.putNumber("Driven Distance", Robot.drivetrain.getDistanceTravelled());
+
     CameraServer.getInstance().startAutomaticCapture();
 
     pdp.clearStickyFaults();
