@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -30,6 +31,8 @@ public class DrivetrainTempest extends Drivetrain {
   private WPI_VictorSPX m_rightSPX;
   private SpeedController m_right;
 
+
+
   public DrivetrainTempest() {
     m_leftSRX = new WPI_TalonSRX(RobotMapTempest.leftDriveMotor);
     m_leftSPX = new WPI_VictorSPX(RobotMapTempest.leftDriveMotor2);
@@ -40,6 +43,9 @@ public class DrivetrainTempest extends Drivetrain {
     m_right = new SpeedControllerGroup(m_rightSRX, m_rightSPX);
 
     m_drive = new DifferentialDrive(m_left, m_right);
+
+    m_leftSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+    m_rightSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
   }
 
   protected double getRawDistanceTravelled() {
