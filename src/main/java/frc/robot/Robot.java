@@ -28,12 +28,12 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
- // public static DigitalInput lineSensorLeft = new DigitalInput(RobotMap.lineSensorLeft);
-  //public static DigitalInput lineSensorRight = new DigitalInput(RobotMap.lineSensorRight);
+  public String name = "Tempest";
+
   public LineSensors lineSensors = new LineSensors();
   public static OI m_oi = new OI();
-  public static Drivetrain drivetrain = new Drivetrain();
-  public static Gyro gyro = new GyroPidgeon();
+  public static Drivetrain drivetrain;
+  public static Gyro gyro;
   public static LineSensors lnSensors = new LineSensors();
   public static Arduino arduino = new Arduino();
   public static PowerDistributionPanel pdp = new PowerDistributionPanel();
@@ -48,9 +48,21 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+
+    switch(name) {
+      case "Tempest":
+        drivetrain = new DrivetrainTempest();
+        gyro = new GyroPidgeon();
+        break;
+      case "Charlie":
+      default:
+        drivetrain = new DrivetrainCharlie();
+        gyro = new GyroNavX();
+        break;
+    }
+
     m_chooser.setDefaultOption("Drive Distance", new DriveDistance(60));
     m_chooser.addOption("Do nothing", null);
-
     SmartDashboard.putData("Auto mode", m_chooser);
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -150,8 +162,7 @@ public class Robot extends TimedRobot {
   }
   //
   public static void SwitchDrive() {
-    drivetrain.m_rightSPX.setInverted(!drivetrain.m_rightSPX.getInverted());
-    drivetrain.m_leftSPX.setInverted(!drivetrain.m_leftSPX.getInverted());
+    drivetrain.reverse(!drivetrain.isReversed());
   }
   public void sendLineSensor() {
     boolean LnSensors[] = new boolean[3];
