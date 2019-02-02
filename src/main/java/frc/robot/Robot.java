@@ -28,7 +28,7 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public String name = "Charlie";
+  public String name = "Tempest";
 
   public static OI m_oi = new OI();
   public static Drivetrain drivetrain;
