@@ -43,8 +43,7 @@ Driver
 
 # The Ten Commandments of Coding
 
-- Thou shalt camel caseth names of variables and methods.
-- Thou shalt capitalizeth class names.
+- Thou shalt camel caseth names of variables and methods and capitalizeth names of class.
 - Thou shalt placeth opening brackets on the line of their corresponding declaration.
 - Thou shalt placeth a space before all opening curly brackets.
 - Thou shalt placeth a space before the parentheses of an if, else if, or switch.
