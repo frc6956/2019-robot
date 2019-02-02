@@ -7,6 +7,9 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,16 +21,31 @@ import frc.robot.commands.TeleopDrive;
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
-        private double speedLimit = 0.8;
-        VictorSP m_leftSP = new VictorSP(RobotMap.leftDriveMotor);
-        SpeedControllerGroup m_left = new SpeedControllerGroup(m_leftSP);
+  //calculate ticsPerInch
+  private double speedLimit = 0.8;
+  double zeroDistance = 0;
+  double ticksPerInch = 4096/(4*Math.PI);
+  /*
+   * Charlie VictorSP m_leftSP = new VictorSP(RobotMap.leftDriveMotor);
+   * SpeedControllerGroup m_left = new SpeedControllerGroup(m_leftSP);
+   * 
+   * VictorSP m_rightSP = new VictorSP(RobotMap.rightDriveMotor);
+   * SpeedControllerGroup m_right = new SpeedControllerGroup(m_rightSP);
+   */
 
-        VictorSP m_rightSP = new VictorSP(RobotMap.rightDriveMotor);
-        SpeedControllerGroup m_right = new SpeedControllerGroup(m_rightSP);
+  // Tempest
+  WPI_TalonSRX m_leftSRX = new WPI_TalonSRX(RobotMap.leftDriveMotor);
+  public WPI_VictorSPX m_leftSPX = new WPI_VictorSPX(RobotMap.leftDriveMotor2);
+  SpeedControllerGroup m_left = new SpeedControllerGroup(m_leftSRX, m_leftSPX);
 
-        DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+  WPI_TalonSRX m_rightSRX = new WPI_TalonSRX(RobotMap.rightDriveMotor);
+  public WPI_VictorSPX m_rightSPX = new WPI_VictorSPX(RobotMap.rightDriveMotor2);
+  SpeedControllerGroup m_right = new SpeedControllerGroup(m_rightSRX, m_rightSPX);
 
-        public Drivetrain(){}
+  DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+
+  public Drivetrain() {
+  }
   // Put methods for controlling this subsystem/
   // here. Call these from Commands.
 
@@ -45,4 +63,19 @@ public class Drivetrain extends Subsystem {
   public void setArcadeDrive(double xSpeed, double zRotation) {
     m_drive.arcadeDrive(xSpeed * speedLimit, zRotation * speedLimit);
   }
+
+  public double getDistanceTravelled() {
+		return getRawDistanceTravelled() - zeroDistance;
+	}
+	public double getRawDistanceTravelled() {
+		double total = m_leftSRX.getSelectedSensorPosition(0) / ticksPerInch;
+		total += m_rightSRX.getSelectedSensorPosition(0) / ticksPerInch;
+		return(total/2);
+  }
+  
+
+	
+	public void resetDistanceTravelled() {
+		zeroDistance = getRawDistanceTravelled();
+	}
 }

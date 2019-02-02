@@ -7,11 +7,18 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 
-public class TeleopDrive extends Command {
-  public TeleopDrive() {
+/**
+ * Add your docs here.
+ */
+public class TimedDriveStraight extends TimedCommand {
+  /**
+   * Add your docs here.
+   */
+  public TimedDriveStraight(double timeout) {
+    super(timeout);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrain);
@@ -20,42 +27,25 @@ public class TeleopDrive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (!Robot.m_oi.getIsJoystick()) {
-      if (Robot.m_oi.getIsTank()) {
-        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight()); // tank
-      } else {
-        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX()); // arcade
-      }
-    } else {
-      if (Robot.m_oi.getIsTank()) {
-        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight());
-      } else {
-        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX());
-      }
-    }
+    Robot.drivetrain.setTankDrive(0.5, 0.5);
   }
 
-
-
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    return false;
-  }
-
-  // Called once after isFinished returns true
+  // Called once after timeout
   @Override
   protected void end() {
+    Robot.drivetrain.setTankDrive(0 , 0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

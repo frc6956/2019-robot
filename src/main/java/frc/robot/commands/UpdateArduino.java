@@ -10,11 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TeleopDrive extends Command {
-  public TeleopDrive() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.drivetrain);
+public class UpdateArduino extends Command {
+  public UpdateArduino() {
+    requires(Robot.arduino);
   }
 
   // Called just before this Command runs the first time
@@ -25,22 +23,8 @@ public class TeleopDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (!Robot.m_oi.getIsJoystick()) {
-      if (Robot.m_oi.getIsTank()) {
-        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight()); // tank
-      } else {
-        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX()); // arcade
-      }
-    } else {
-      if (Robot.m_oi.getIsTank()) {
-        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight());
-      } else {
-        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX());
-      }
-    }
+    Robot.arduino.update();
   }
-
-
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -57,5 +41,6 @@ public class TeleopDrive extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

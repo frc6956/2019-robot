@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.PWMSpeedController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,7 +39,7 @@ public class OI {
   }
 
   public double getTankRight() {
-      
+
     if (isJoystick) {
       // Right Joystick Y
       return -driverRight.getY();
@@ -64,8 +65,8 @@ public class OI {
     if (isSplit && isJoystick) {
       // right xbox Joystick X
       return driverLeft.getX();
-    } else if (isJoystick) {   
-      // right Joystick X   
+    } else if (isJoystick) {
+      // right Joystick X
       return driverRight.getX();
     }
     // left xbox Joystick X
@@ -114,9 +115,24 @@ public class OI {
     return isTank;
   }
 
+  public void AutoCenter() {
+    if (driver.getAButtonPressed()) {
+      AutoCenter();
+    }
+  }
+
+  public void InvertDrive() {
+    if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
+        Robot.SwitchDrive();
+    }
+  }
+
+  
+
   public boolean getIsJoystick() {
     return isJoystick;
   }
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to

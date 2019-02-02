@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TeleopDrive extends Command {
-  public TeleopDrive() {
+public class AutoCenter extends Command {
+  public AutoCenter() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrain);
@@ -25,23 +25,15 @@ public class TeleopDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (!Robot.m_oi.getIsJoystick()) {
-      if (Robot.m_oi.getIsTank()) {
-        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight()); // tank
-      } else {
-        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX()); // arcade
-      }
-    } else {
-      if (Robot.m_oi.getIsTank()) {
-        Robot.drivetrain.setTankDrive(Robot.m_oi.getTankLeft(), Robot.m_oi.getTankRight());
-      } else {
-        Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX());
-      }
+    if(Robot.lnSensors.getIsLeft()) {
+      Robot.drivetrain.setTankDrive(0.5, -0.5);
+    }
+    if(Robot.lnSensors.getIsRight()) {
+      Robot.drivetrain.setTankDrive(-0.5, 0.5);
     }
   }
 
-
-
+  
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
@@ -51,11 +43,14 @@ public class TeleopDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.drivetrain.setTankDrive(0, 0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
+
 }

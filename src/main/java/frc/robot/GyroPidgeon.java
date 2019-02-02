@@ -1,14 +1,15 @@
 package frc.robot;
 
 import com.ctre.phoenix.sensors.PigeonIMU;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-public class Navigation implements Gyro {
+public class GyroPidgeon implements Gyro {
 
 	private PigeonIMU pigeon = new PigeonIMU(0);;
 	double zeroAngle;
-	public Navigation() {
+	public GyroPidgeon() {
 		reset();
 	}
 	@Override
@@ -16,7 +17,7 @@ public class Navigation implements Gyro {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	@Override
 	public void reset() {
 		// TODO Auto-generated method stub
