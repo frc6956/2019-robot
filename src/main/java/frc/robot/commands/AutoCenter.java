@@ -25,10 +25,10 @@ public class AutoCenter extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.lnSensors.getIsLeft()) {
+    if(Robot.lineSensors.getIsLeft()) {
       Robot.drivetrain.setTankDrive(0.5, -0.5);
     }
-    if(Robot.lnSensors.getIsRight()) {
+    if(Robot.lineSensors.getIsRight()) {
       Robot.drivetrain.setTankDrive(-0.5, 0.5);
     }
   }
