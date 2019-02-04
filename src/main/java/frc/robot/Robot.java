@@ -64,8 +64,6 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Do nothing", null);
     SmartDashboard.putData("Auto mode", m_chooser);
 
-    
-
     CameraServer.getInstance().startAutomaticCapture();
 
     pdp.clearStickyFaults();
@@ -82,8 +80,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    sendLineSensor();
-    SmartDashboard.putNumber("Driven Distance", Robot.drivetrain.getDistanceTravelled());
+	sendLineSensor();
+	SmartDashboard.putNumber("gyro", gyro.getAngle());
   }
 
   /**
