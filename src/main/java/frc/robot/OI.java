@@ -116,7 +116,7 @@ public class OI {
 
   public void AutoCenter() {
     if (driver.getAButtonPressed()) {
-      AutoCenter();
+      Robot.drivetrain.autoAlign();
     }
   }
 
@@ -128,9 +128,6 @@ public class OI {
         return false;
     }
   }
-  
-
-  
 
   public boolean getIsJoystick() {
     return isJoystick;
