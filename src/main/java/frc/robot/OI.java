@@ -114,11 +114,10 @@ public class OI {
     return isTank;
   }
 
-  public void AutoCenter() {
-    if (driver.getAButtonPressed()) {
-      AutoCenter();
-    }
+  public boolean AutoCenter() {
+    return driver.getAButtonPressed();
   }
+
 
   public boolean InvertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
