@@ -115,7 +115,7 @@ public class OI {
   }
 
   public boolean autoAlign() {
-    return driver.getAButtonPressed();
+    return driver.getAButton();
   }
 
   public boolean InvertDrive() {
