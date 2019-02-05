@@ -111,30 +111,24 @@ public class OI {
       isSplit = false;
       isJoystick = true;
     }
-    if(driver.getAButtonPressed()) {
-      Robot.drivetrain.autoAlign();
-    }
     return isTank;
   }
 
-  /* public void AutoCenter() {
-     
+  public boolean AutoCenter() {
+      return driver.getAButtonPressed();
   }
-   */ 
 
   public boolean InvertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
-        return true;
-    }   
-    else {
-        return false;
+      return true;
+    } else {
+      return false;
     }
   }
 
   public boolean getIsJoystick() {
     return isJoystick;
   }
-
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
