@@ -75,7 +75,7 @@ public class OI {
   public boolean getIsTank() {
     // xbox buttons
     // xbox tank drive
-    if (driver.getXButtonReleased()) {
+    if (driver.getAButtonReleased()) {
       isTank = true;
       isSplit = false;
       isJoystick = false;
@@ -114,9 +114,7 @@ public class OI {
     return isTank;
   }
 
-  public boolean AutoCenter() {
-      return driver.getAButtonPressed();
-  }
+  
 
   public boolean InvertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
