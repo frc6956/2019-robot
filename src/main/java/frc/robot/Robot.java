@@ -37,6 +37,8 @@ public class Robot extends TimedRobot {
   public static Arduino arduino = new Arduino();
   public static PowerDistributionPanel pdp = new PowerDistributionPanel();
   public static Compressor compressor = new Compressor();
+  public static CargoHandler cargoHandler = new CargoHandler();
+  public static HatchHandler hatchHandler = new HatchHandler();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -60,7 +62,7 @@ public class Robot extends TimedRobot {
         break;
     }
 
-    m_chooser.setDefaultOption("Drive Distance", new DriveDistance(60));
+    m_chooser.setDefaultOption("Drive Distance", new DriveDistance(20));
     m_chooser.addOption("Do nothing", null);
     SmartDashboard.putData("Auto mode", m_chooser);
 

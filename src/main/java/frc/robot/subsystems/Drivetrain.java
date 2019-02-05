@@ -62,10 +62,10 @@ public abstract class Drivetrain extends Subsystem {
 
   public void AutoAlign() {
     if(Robot.lineSensors.getIsLeft()) {
-      Robot.drivetrain.setTankDrive(0.5, -0.5);
+      Robot.drivetrain.setTankDrive(0.8, -0.8);
     }
     if(Robot.lineSensors.getIsRight()) {
-      Robot.drivetrain.setTankDrive(-0.5, 0.5);
+      Robot.drivetrain.setTankDrive(-0.8, 0.8);
     }
     if(Robot.lineSensors.getIsOnTarget()) {
       Robot.drivetrain.setTankDrive(0, 0);
