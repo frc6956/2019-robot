@@ -116,7 +116,7 @@ public class OI {
 
   public void AutoCenter() {
     if (driver.getAButtonPressed()) {
-      Robot.drivetrain.autoAlign();
+      AutoCenter();
     }
   }
 
