@@ -111,13 +111,16 @@ public class OI {
       isSplit = false;
       isJoystick = true;
     }
+    if(driver.getAButtonPressed()) {
+      Robot.drivetrain.autoAlign();
+    }
     return isTank;
   }
 
-  public boolean AutoCenter() {
-    return driver.getAButtonPressed();
+  /* public void AutoCenter() {
+     
   }
-
+   */ 
 
   public boolean InvertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
