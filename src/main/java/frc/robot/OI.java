@@ -116,7 +116,7 @@ public class OI {
 
   public boolean autoAlign() {
     return driver.getAButtonPressed();
-}
+  }
 
   public boolean InvertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
