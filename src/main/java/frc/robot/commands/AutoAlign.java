@@ -36,7 +36,9 @@ public class AutoAlign extends Command {
     }
     if(Robot.lineSensors.notOnTarget()) {
       Robot.drivetrain.setTankDrive(0, 0);
-    }
+		}
+		boolean[] positions = {Robot.lineSensors.getIsLeft(), Robot.lineSensors.getIsOnTarget(), Robot.lineSensors.getIsRight()};
+		Smartdashboard.putBooleanArray("Left, On center, Right", positions)
   }
 
 	// Make this return true when this Command no longer needs to run execute()
