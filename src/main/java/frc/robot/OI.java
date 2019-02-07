@@ -20,13 +20,6 @@ import frc.robot.commands.AutoAlign;
  */
 public class OI {
 
-  public OI() {
-
-    XboxController xbox = new XboxController(0);
-    Button button1 = new JoystickButton(xbox, 1);
-    button1.whileHeld(new AutoAlign());
-    
-  }
   // if is tank is false use arcade
   private boolean isTank = false;
   // if arcade enabled and this is true split X and Y
@@ -38,6 +31,12 @@ public class OI {
   private XboxController driver = new XboxController(RobotMap.driverController);
   private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
   private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
+
+  public OI() {
+    Button button1 = new JoystickButton(driver, 1);
+    button1.whileHeld(new AutoAlign());
+    
+  }
 
   
   public double getTankLeft() {
