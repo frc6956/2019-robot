@@ -31,6 +31,7 @@ public class OI {
   private XboxController driver = new XboxController(RobotMap.driverController);
   private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
   private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
+  private XboxController operator = new XboxController(RobotMap.operatorController);
 
   public OI() {
     Button button1 = new JoystickButton(driver, 1);
@@ -125,7 +126,7 @@ public class OI {
     return isTank;
   }
 
-  public boolean InvertDrive() {
+  public boolean invertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
       return true;
     } else {
@@ -137,7 +138,18 @@ public class OI {
     return isJoystick;
   }
 
-  
+  public boolean getIsHatchDeployed() {
+    if (operator.getBumperReleased(Hand.kLeft) || operator.getBumperReleased(Hand.kRight)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  public double getCargoArm() {
+    return operator.getY(Hand.kLeft);
+  }
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to

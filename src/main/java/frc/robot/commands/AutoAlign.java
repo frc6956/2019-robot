@@ -31,19 +31,15 @@ public class AutoAlign extends Command {
   public void execute() {
     if(Robot.lineSensors.getIsLeft()) {
 			Robot.drivetrain.setTankDrive(0.7, -0.7);
-			SmartDashboard.putBoolean("Too far left", Robot.lineSensors.getIsLeft());
     }
     if(Robot.lineSensors.getIsRight()) {
 			Robot.drivetrain.setTankDrive(-0.7, 0.7);
-			SmartDashboard.putBoolean("Too far right", Robot.lineSensors.getIsRight());
     }
     if(Robot.lineSensors.getIsOnTarget()) {
 			Robot.drivetrain.setTankDrive(0, 0);
-			SmartDashboard.putBoolean("On target", Robot.lineSensors.getIsOnTarget());
     }
     if(Robot.lineSensors.notOnTarget()) {
 			Robot.drivetrain.setTankDrive(0, 0);
-			SmartDashboard.putBoolean("Not on target", Robot.lineSensors.notOnTarget());
     }
   }
 

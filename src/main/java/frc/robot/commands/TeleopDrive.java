@@ -41,7 +41,7 @@ public class TeleopDrive extends Command {
         Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX());
       }
     }
-    if (Robot.m_oi.InvertDrive()) {
+    if (Robot.m_oi.invertDrive()) {
       Robot.drivetrain.reverse(!Robot.drivetrain.isReversed());
     }
     
