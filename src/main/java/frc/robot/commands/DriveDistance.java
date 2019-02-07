@@ -32,19 +32,22 @@ public class DriveDistance extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double left = 0.5, right = 0.5, currentAngle = Robot.gyro.getAngle();
-	if (currentAngle < initAngle) {
-		left += 0.1;
-	} else if (currentAngle > initAngle) {
-		right += 0.1;
-	}
+    double left = 0.5, right = 0.5;
+    double currentAngle = Robot.gyro.getAngle();
+
+    if (currentAngle < initAngle) {
+      left += 0.1;
+    } else if (currentAngle > initAngle) {
+      right += 0.1;
+    }
     Robot.drivetrain.setTankDrive(left, right);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.drivetrain.getDistanceTravelled() == desiredDistance) {
+    if (Robot.drivetrain.getDistanceTravelled() >= desiredDistance) {
       return true;
     } else {
       return false;
@@ -57,12 +60,11 @@ public class DriveDistance extends Command {
     Robot.drivetrain.setTankDrive(0, 0);
   }
 
-
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
     end();
   }
-  
+
 }

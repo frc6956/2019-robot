@@ -7,12 +7,14 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMapTempest;
 
 /**
@@ -20,7 +22,7 @@ import frc.robot.RobotMapTempest;
  */
 public class DrivetrainTempest extends Drivetrain {
   // calculate ticsPerInch
-  private final double ticksPerInch = 4096 / (4 * Math.PI);
+  private final double ticksPerInch = 4096 / (6 * Math.PI);
 
   private WPI_TalonSRX m_leftSRX;
   private WPI_VictorSPX m_leftSPX;
@@ -29,6 +31,8 @@ public class DrivetrainTempest extends Drivetrain {
   private WPI_TalonSRX m_rightSRX;
   private WPI_VictorSPX m_rightSPX;
   private SpeedController m_right;
+
+
 
   public DrivetrainTempest() {
     m_leftSRX = new WPI_TalonSRX(RobotMapTempest.leftDriveMotor);
@@ -40,6 +44,10 @@ public class DrivetrainTempest extends Drivetrain {
     m_right = new SpeedControllerGroup(m_rightSRX, m_rightSPX);
 
     m_drive = new DifferentialDrive(m_left, m_right);
+
+    m_leftSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+    m_leftSRX.setSensorPhase(true);
+    m_rightSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
   }
 
   protected double getRawDistanceTravelled() {

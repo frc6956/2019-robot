@@ -28,15 +28,17 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public String name = "Tempest";
+  public String name = "Charlie";
 
-  public static OI m_oi = new OI();
+  public static OI m_oi;
   public static Drivetrain drivetrain;
   public static Gyro gyro;
   public static LineSensors lineSensors = new LineSensors();
   public static Arduino arduino = new Arduino();
   public static PowerDistributionPanel pdp = new PowerDistributionPanel();
   public static Compressor compressor = new Compressor();
+  public static CargoHandler cargoHandler = new CargoHandler();
+  public static HatchHandler hatchHandler = new HatchHandler();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -59,8 +61,9 @@ public class Robot extends TimedRobot {
         gyro = new GyroNavX();
         break;
     }
+    m_oi = new OI();
 
-    m_chooser.setDefaultOption("Drive Distance", new DriveDistance(60));
+    m_chooser.setDefaultOption("Drive Distance", new DriveDistance(20));
     m_chooser.addOption("Do nothing", null);
     SmartDashboard.putData("Auto mode", m_chooser);
 
@@ -80,7 +83,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    sendLineSensor();
+	sendLineSensor();
+  SmartDashboard.putNumber("gyro", gyro.getAngle());
   }
 
   /**
@@ -106,7 +110,7 @@ public class Robot extends TimedRobot {
    *
    * <p>You can add additional auto modes by adding additional commands to the
    * chooser code above (like the commented example) or additional comparisons
-   * to the switch structure below with additional strings & commands.
+   * to the switch structure below with additional strings and commands.
    */
   @Override
   public void autonomousInit() {
@@ -165,6 +169,8 @@ public class Robot extends TimedRobot {
       LnSensors[0] = lineSensors.getIsLeft();
       LnSensors[1] = lineSensors.getIsOnTarget();
       LnSensors[2] = lineSensors.getIsRight();
-    SmartDashboard.getBooleanArray("On Line?", LnSensors);
+    SmartDashboard.putBoolean("Left", LnSensors[0]);
+    SmartDashboard.putBoolean("Center", LnSensors[1]);
+    SmartDashboard.putBoolean("Right", LnSensors[2]);
   }
 }

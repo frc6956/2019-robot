@@ -44,7 +44,7 @@ public class GyroPidgeon implements Gyro {
 	private double getRawAngle() {
 		double [] ypr = new double [3];
 		pigeon.getYawPitchRoll(ypr);
-		return ypr[0];
+		return -ypr[0];
 	}
 
 	@Override

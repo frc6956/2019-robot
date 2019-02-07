@@ -10,13 +10,16 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.PWMSpeedController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.AutoAlign;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
   // if is tank is false use arcade
   private boolean isTank = false;
   // if arcade enabled and this is true split X and Y
@@ -30,6 +33,13 @@ public class OI {
   private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
   private XboxController operator = new XboxController(RobotMap.operatorController);
 
+  public OI() {
+    Button button1 = new JoystickButton(driver, 1);
+    button1.whileHeld(new AutoAlign());
+    
+  }
+
+  
   public double getTankLeft() {
     if (isJoystick) {
       // Left joystick Y
@@ -116,18 +126,11 @@ public class OI {
     return isTank;
   }
 
-  public void autoCenter() {
-    if (driver.getAButtonPressed()) {
-      autoCenter();
-    }
-  }
-
   public boolean invertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
-        return true;
-    }   
-    else {
-        return false;
+      return true;
+    } else {
+      return false;
     }
   }
 
