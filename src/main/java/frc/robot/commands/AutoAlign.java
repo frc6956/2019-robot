@@ -27,20 +27,20 @@ public class AutoAlign extends Command {
 	@Override
   public void execute() {
     if(Robot.lineSensors.getIsLeft()) {
-      Robot.drivetrain.setTankDrive(0.7, -0.7);
+			Robot.drivetrain.setTankDrive(0.7, -0.7);
+			SmartDashboard.putBoolean("Too far left", Robot.lineSensors.getIsLeft());
     }
     if(Robot.lineSensors.getIsRight()) {
-      Robot.drivetrain.setTankDrive(-0.7, 0.7);
+			Robot.drivetrain.setTankDrive(-0.7, 0.7);
+			SmartDashboard.putBoolean("Too far right", Robot.lineSensors.getIsRight());
     }
     if(Robot.lineSensors.getIsOnTarget()) {
-      Robot.drivetrain.setTankDrive(0, 0);
+			Robot.drivetrain.setTankDrive(0, 0);
+			SmartDashboard.putBoolean("On target", Robot.lineSensors.getIsOnTarget());
     }
     if(Robot.lineSensors.notOnTarget()) {
-      Robot.drivetrain.setTankDrive(0, 0);
-		}
-		//boolean[] positions = { Robot.lineSensors.getIsLeft(), Robot.lineSensors.getIsOnTarget(),
-			//Robot.lineSensors.getIsRight() };
-	//SmartDashboard.getBooleanArray("Left, On center, Right", positions);
+			Robot.drivetrain.setTankDrive(0, 0);
+    }
   }
 
 	// Make this return true when this Command no longer needs to run execute()
