@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.PWMSpeedController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -27,6 +28,7 @@ public class OI {
   private XboxController driver = new XboxController(RobotMap.driverController);
   private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
   private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
+  private XboxController operator = new XboxController(RobotMap.operatorController);
 
   public double getTankLeft() {
     if (isJoystick) {
@@ -114,13 +116,13 @@ public class OI {
     return isTank;
   }
 
-  public void AutoCenter() {
+  public void autoCenter() {
     if (driver.getAButtonPressed()) {
-      AutoCenter();
+      autoCenter();
     }
   }
 
-  public boolean InvertDrive() {
+  public boolean invertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
         return true;
     }   
@@ -128,14 +130,23 @@ public class OI {
         return false;
     }
   }
-  
-
-  
 
   public boolean getIsJoystick() {
     return isJoystick;
   }
 
+  public boolean getIsHatchDeployed() {
+    if (operator.getBumperReleased(Hand.kLeft) || operator.getBumperReleased(Hand.kRight)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  public double getCargoArm() {
+    return operator.getY(Hand.kLeft);
+  }
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
