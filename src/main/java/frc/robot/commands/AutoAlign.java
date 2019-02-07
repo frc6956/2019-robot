@@ -40,7 +40,7 @@ public class AutoAlign extends Command {
     }
     if(Robot.lineSensors.notOnTarget()) {
 			Robot.drivetrain.setTankDrive(0, 0);
-			SmartDashboard.putBoolean("not on target", Robot.lineSensors.notOnTarget());
+			SmartDashboard.putBoolean("Not on target", Robot.lineSensors.notOnTarget());
     }
   }
 
