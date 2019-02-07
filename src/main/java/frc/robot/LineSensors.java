@@ -6,13 +6,13 @@ public class LineSensors {
     private  DigitalInput right = new DigitalInput(RobotMap.lineSensorRight);
     private  DigitalInput left = new DigitalInput(RobotMap.lineSensorLeft);
 
-    public boolean getIsLeft() {
+    public boolean getIsRight() {
         return !left.get() && right.get();
     }
     public boolean getIsOnTarget() {
         return left.get() && right.get();
     }
-    public boolean getIsRight() {
+    public boolean getIsLeft() {
         return left.get() && !right.get();
     }
     public boolean notOnTarget() {

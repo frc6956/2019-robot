@@ -26,10 +26,10 @@ public class AutoAlign extends Command {
 	@Override
   public void execute() {
     if(Robot.lineSensors.getIsLeft()) {
-      Robot.drivetrain.setTankDrive(0.3, -0.3);
+      Robot.drivetrain.setTankDrive(0.7, -0.7);
     }
     if(Robot.lineSensors.getIsRight()) {
-      Robot.drivetrain.setTankDrive(-0.3, 0.3);
+      Robot.drivetrain.setTankDrive(-0.7, 0.7);
     }
     if(Robot.lineSensors.getIsOnTarget()) {
       Robot.drivetrain.setTankDrive(0, 0);

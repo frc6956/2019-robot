@@ -30,7 +30,7 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
   public String name = "Charlie";
 
-  public static OI m_oi = new OI();
+  public static OI m_oi;
   public static Drivetrain drivetrain;
   public static Gyro gyro;
   public static LineSensors lineSensors = new LineSensors();
@@ -61,6 +61,7 @@ public class Robot extends TimedRobot {
         gyro = new GyroNavX();
         break;
     }
+    m_oi = new OI();
 
     m_chooser.setDefaultOption("Drive Distance", new DriveDistance(20));
     m_chooser.addOption("Do nothing", null);
