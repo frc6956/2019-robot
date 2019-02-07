@@ -84,7 +84,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 	sendLineSensor();
-	SmartDashboard.putNumber("gyro", gyro.getAngle());
+  SmartDashboard.putNumber("gyro", gyro.getAngle());
   }
 
   /**
@@ -169,6 +169,8 @@ public class Robot extends TimedRobot {
       LnSensors[0] = lineSensors.getIsLeft();
       LnSensors[1] = lineSensors.getIsOnTarget();
       LnSensors[2] = lineSensors.getIsRight();
-    SmartDashboard.getBooleanArray("On Line?", LnSensors);
+    SmartDashboard.putBoolean("Left", LnSensors[0]);
+    SmartDashboard.putBoolean("Center", LnSensors[1]);
+    SmartDashboard.putBoolean("Right", LnSensors[2]);
   }
 }
