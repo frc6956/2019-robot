@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class AutoAlign extends Command {
@@ -26,23 +27,23 @@ public class AutoAlign extends Command {
 	@Override
   public void execute() {
     if(Robot.lineSensors.getIsLeft()) {
-      Robot.drivetrain.setTankDrive(0.5, -0.5);
+			Robot.drivetrain.setTankDrive(0.7, -0.7);
     }
     if(Robot.lineSensors.getIsRight()) {
-      Robot.drivetrain.setTankDrive(-0.5, 0.5);
+			Robot.drivetrain.setTankDrive(-0.7, 0.7);
     }
     if(Robot.lineSensors.getIsOnTarget()) {
-      Robot.drivetrain.setTankDrive(0, 0);
+			Robot.drivetrain.setTankDrive(0, 0);
     }
     if(Robot.lineSensors.notOnTarget()) {
-      Robot.drivetrain.setTankDrive(0, 0);
+			Robot.drivetrain.setTankDrive(0, 0);
     }
   }
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 
 	// Called once after isFinished returns true

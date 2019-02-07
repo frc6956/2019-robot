@@ -10,12 +10,16 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.AutoAlign;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
   // if is tank is false use arcade
   private boolean isTank = false;
   // if arcade enabled and this is true split X and Y
@@ -28,6 +32,13 @@ public class OI {
   private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
   private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
 
+  public OI() {
+    Button button1 = new JoystickButton(driver, 1);
+    button1.whileHeld(new AutoAlign());
+    
+  }
+
+  
   public double getTankLeft() {
     if (isJoystick) {
       // Left joystick Y
@@ -75,7 +86,7 @@ public class OI {
   public boolean getIsTank() {
     // xbox buttons
     // xbox tank drive
-    if (driver.getAButtonReleased()) {
+    if (driver.getXButtonReleased()) {
       isTank = true;
       isSplit = false;
       isJoystick = false;
@@ -114,10 +125,6 @@ public class OI {
     return isTank;
   }
 
-  public boolean autoAlign() {
-    return driver.getAButton();
-  }
-
   public boolean InvertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
       return true;
@@ -129,6 +136,8 @@ public class OI {
   public boolean getIsJoystick() {
     return isJoystick;
   }
+
+  
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
