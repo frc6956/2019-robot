@@ -60,20 +60,6 @@ public abstract class Drivetrain extends Subsystem {
     return reverse;
   }
 
-  public void AutoAlign() {
-    if(Robot.lineSensors.getIsLeft()) {
-      Robot.drivetrain.setTankDrive(0.8, -0.8);
-    }
-    if(Robot.lineSensors.getIsRight()) {
-      Robot.drivetrain.setTankDrive(-0.8, 0.8);
-    }
-    if(Robot.lineSensors.getIsOnTarget()) {
-      Robot.drivetrain.setTankDrive(0, 0);
-    }
-    if(Robot.lineSensors.notOnTarget()) {
-      Robot.drivetrain.setTankDrive(0, 0);
-    }
-  }
   protected abstract double getRawDistanceTravelled();
 
 }

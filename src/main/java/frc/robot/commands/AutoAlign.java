@@ -26,10 +26,10 @@ public class AutoAlign extends Command {
 	@Override
   public void execute() {
     if(Robot.lineSensors.getIsLeft()) {
-      Robot.drivetrain.setTankDrive(0.5, -0.5);
+      Robot.drivetrain.setTankDrive(0.3, -0.3);
     }
     if(Robot.lineSensors.getIsRight()) {
-      Robot.drivetrain.setTankDrive(-0.5, 0.5);
+      Robot.drivetrain.setTankDrive(-0.3, 0.3);
     }
     if(Robot.lineSensors.getIsOnTarget()) {
       Robot.drivetrain.setTankDrive(0, 0);
@@ -42,7 +42,7 @@ public class AutoAlign extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 
 	// Called once after isFinished returns true

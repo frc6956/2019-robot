@@ -41,9 +41,7 @@ public class TeleopDrive extends Command {
     if (Robot.m_oi.InvertDrive()) {
       Robot.drivetrain.reverse(!Robot.drivetrain.isReversed());
     }
-    if (Robot.m_oi.autoAlign()) {
-      Robot.drivetrain.AutoAlign();
-    }
+    
   }
 
 
