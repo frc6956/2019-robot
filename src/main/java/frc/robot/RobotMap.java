@@ -22,6 +22,6 @@ public class RobotMap {
   public static final int driverControllerRight = 3;
 
   // Roborio map of Digital Inputs
-  public static final int lineSensorRight = 0;
-  public static final int lineSensorLeft = 1;
+  public static final int lineSensorRight = 1;
+  public static final int lineSensorLeft = 0;
 }
