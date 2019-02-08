@@ -24,10 +24,16 @@ public abstract class Drivetrain extends Subsystem {
   private boolean reverse = false;
 
   @Override
+  /**
+   * What the robot does on default
+   */
   public void initDefaultCommand() {
     setDefaultCommand(new TeleopDrive());
   }
 
+  /**
+   * Sets Tank Drive and Speed
+   */
   public void setTankDrive(double left, double right) {
     if (reverse) {
       m_drive.tankDrive(-right * speedLimit, -left * speedLimit);
@@ -36,6 +42,11 @@ public abstract class Drivetrain extends Subsystem {
     }
   }
 
+  /**
+   * Sets Arcade Drive speed and rotation
+   * @param speed
+   * @param rotation
+   */
   public void setArcadeDrive(double speed, double rotation) {
     if (reverse) {
       m_drive.arcadeDrive(-speed * speedLimit, rotation * speedLimit);
@@ -44,22 +55,40 @@ public abstract class Drivetrain extends Subsystem {
     }
   }
 
+  /**
+   * Gets the distance travelled 
+   */
   public double getDistanceTravelled() {
     return getRawDistanceTravelled() - zeroDistance;
   }
 
+  /**
+   * Resets the distance travelled
+   */
   public void resetDistanceTravelled() {
     zeroDistance = getRawDistanceTravelled();
   }
 
+  /**
+   * Reverses the drivetrain
+   * @param reverse
+   */
   public void reverse(boolean reverse) {
     this.reverse = reverse;
   }
 
+  /**
+   * Checks if the drivetrain is reversed
+   * @return
+   */
   public boolean isReversed() {
     return reverse;
   }
 
+  /**
+   * gets the total distance travelled
+   * @return
+   */
   protected abstract double getRawDistanceTravelled();
 
 }
