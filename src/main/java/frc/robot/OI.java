@@ -127,10 +127,6 @@ public class OI {
     return isTank;
   }
 
-  public double getCargoSpeed() {
-    return operator.getY(Hand.kLeft);
-  }
-
   public boolean invertDrive() {
     if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
       return true;
@@ -142,6 +138,14 @@ public class OI {
   public boolean getIsJoystick() {
     return isJoystick;
   }
+  
+  public double getCargoSpeed() {
+    return operator.getY(Hand.kLeft);
+  }
+  
+  public void deployHatch() {
+    operator.getYButtonPressed();
+  }
 
   public boolean getIsHatchDeployed() {
     if (operator.getBumperReleased(Hand.kLeft) || operator.getBumperReleased(Hand.kRight)) {
@@ -150,10 +154,6 @@ public class OI {
     else {
       return false;
     }
-  }
-
-  public double getCargoArm() {
-    return operator.getY(Hand.kLeft);
   }
 
   // There are a few additional built in buttons you can use. Additionally,
