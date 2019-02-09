@@ -7,18 +7,23 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
+import frc.robot.commands.TeleopCargo;
 
 /**
- * Add your docs here.
+ * Interface to the cargo handler
  */
 public class CargoHandler extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
+  public Talon wheels = new Talon(RobotMap.cargoHandlerWheels);
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new TeleopCargo());
+  }
+  public void setWheelsSpeed(double speed) {
+    wheels.setSpeed(speed);
   }
 }

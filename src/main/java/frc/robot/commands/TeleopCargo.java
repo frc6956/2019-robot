@@ -7,12 +7,17 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class TeleopCargo extends Command {
   public TeleopCargo() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.cargoHandler);
   }
 
   // Called just before this Command runs the first time
@@ -23,6 +28,7 @@ public class TeleopCargo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.cargoHandler.setWheelsSpeed(Robot.m_oi.getCargoSpeed());
   }
 
   // Make this return true when this Command no longer needs to run execute()

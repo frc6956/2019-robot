@@ -32,6 +32,8 @@ public class OI {
   private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
   private Joystick driverRight = new Joystick(RobotMap.driverControllerRight);
 
+  private XboxController operator = new XboxController(RobotMap.operatorController);
+
   public OI() {
     Button button1 = new JoystickButton(driver, 1);
     button1.whileHeld(new AutoAlign());
@@ -123,6 +125,10 @@ public class OI {
       isJoystick = true;
     }
     return isTank;
+  }
+
+  public double getCargoSpeed() {
+    return operator.getY(Hand.kLeft);
   }
 
   public boolean InvertDrive() {
