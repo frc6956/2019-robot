@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMapCharlie;
 
 /**
- * Drivetrain implementation for Tempest (2018)
+ * Drivetrain implementation for Charlie (QuickBuild)
  */
 public class DrivetrainCharlie extends Drivetrain {
   private final double inchesPerSecond = 12;

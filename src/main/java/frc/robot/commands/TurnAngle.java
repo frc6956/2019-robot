@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import frc.robot.Robot;
 
+/**
+ * Turns angle using Gyro
+ */
 public class TurnAngle extends Command {
 
   double desiredAngle;

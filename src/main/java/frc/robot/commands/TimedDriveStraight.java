@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 
 /**
- * Add your docs here.
+ * Robot drives forward for a set amount of time(seconds)
  */
 public class TimedDriveStraight extends TimedCommand {
   /**

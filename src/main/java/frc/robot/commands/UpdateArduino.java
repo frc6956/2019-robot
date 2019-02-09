@@ -10,6 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+/**
+ * Does nothing
+ */
 public class UpdateArduino extends Command {
   public UpdateArduino() {
     requires(Robot.arduino);

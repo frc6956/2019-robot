@@ -10,6 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+/**
+ * Auto corrects the drivetrain when it drifts
+ */
 public class AutoStraightDrive extends Command {
   public AutoStraightDrive() {
     // Use requires() here to declare subsystem dependencies

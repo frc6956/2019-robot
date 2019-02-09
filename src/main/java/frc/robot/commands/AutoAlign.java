@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
+/**
+ * This auto aligns the drivetrain using the line sensors
+ */
 public class AutoAlign extends Command {
 	public AutoAlign() {
 		// Use requires() here to declare subsystem dependencies

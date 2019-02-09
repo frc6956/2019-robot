@@ -10,6 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+/**
+ * Drivetarin in teleop
+ */
 public class TeleopDrive extends Command {
   public TeleopDrive() {
     // Use requires() here to declare subsystem dependencies
@@ -38,7 +41,7 @@ public class TeleopDrive extends Command {
         Robot.drivetrain.setArcadeDrive(Robot.m_oi.getArcadeY(), Robot.m_oi.getArcadeX());
       }
     }
-    if (Robot.m_oi.InvertDrive()) {
+    if (Robot.m_oi.invertDrive()) {
       Robot.drivetrain.reverse(!Robot.drivetrain.isReversed());
     }
     
