@@ -63,7 +63,7 @@ public class Robot extends TimedRobot {
     }
     m_oi = new OI();
 
-    m_chooser.setDefaultOption("Drive Distance", new DriveDistance(20));
+    m_chooser.setDefaultOption("Drive Distance", new DriveDistance(30));
     m_chooser.addOption("Do nothing", null);
     SmartDashboard.putData("Auto mode", m_chooser);
 

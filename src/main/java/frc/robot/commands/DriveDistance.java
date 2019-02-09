@@ -9,14 +9,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-<<<<<<< HEAD
-/**
- * 
-=======
 
 /**
  * Drives distance in inches. (Note: Robot might drift slightly over the set distance)
->>>>>>> af0a10fe22c6f6a2163651119bb0a5577ed30df4
  */
 public class DriveDistance extends Command {
 

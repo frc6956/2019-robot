@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.commands.TeleopDrive;
 
@@ -48,11 +49,15 @@ public abstract class Drivetrain extends Subsystem {
    * @param rotation
    */
   public void setArcadeDrive(double speed, double rotation) {
+    rotation = rotation * speedLimit;
     if (reverse) {
-      m_drive.arcadeDrive(-speed * speedLimit, rotation * speedLimit);
+      speed = -speed * speedLimit;
     } else {
-      m_drive.arcadeDrive(speed * speedLimit, rotation * speedLimit);
+      speed = speed * speedLimit;
     }
+    SmartDashboard.putNumber("speed", speed);
+    SmartDashboard.putNumber("rotation", rotation);
+    m_drive.arcadeDrive(speed, rotation);
   }
 
   /**

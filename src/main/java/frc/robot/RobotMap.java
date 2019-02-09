@@ -25,5 +25,4 @@ public class RobotMap {
   public static final int lineSensorRight = 1;
   public static final int lineSensorLeft = 0;
 
-  public static final int cargoHandlerWheels = 4;
 }
