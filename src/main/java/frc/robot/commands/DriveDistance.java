@@ -38,9 +38,9 @@ public class DriveDistance extends Command {
     double left = 0.5, right = 0.5;
     double currentAngle = Robot.gyro.getAngle();
 
-    if (currentAngle < initAngle) {
+    if (currentAngle - initAngle > 5) {
       left += 0.1;
-    } else if (currentAngle > initAngle) {
+    } else if (currentAngle - initAngle < -5) {
       right += 0.1;
     }
     Robot.drivetrain.setTankDrive(left, right);
