@@ -34,11 +34,23 @@ public class TurnAngle extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    double currentAngle = Robot.gyro.getAngle();
+    double control = desiredAngle - currentAngle;
 
     if(desiredAngle<0) {
       Robot.drivetrain.setTankDrive(0.5, -0.5);
+      if(control > 5) {
+        Robot.drivetrain.setTankDrive(-0.5, 0.5);
+      } else if(control < 5) {
+        Robot.drivetrain.setTankDrive(0.5, -0.5);
+      }
     } else if(desiredAngle>0) {
       Robot.drivetrain.setTankDrive(-0.5, 0.5);
+      if(control > 5) {
+        Robot.drivetrain.setTankDrive(-0.5, 0.5);
+      } else if(control < 5) {
+        Robot.drivetrain.setTankDrive(0.5, -0.5);
+      }
     }
 
   }
