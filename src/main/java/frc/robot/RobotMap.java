@@ -27,4 +27,8 @@ public class RobotMap {
 
   public static final int cargoHandlerWheels = 4;
 
+  // PCM
+  public static final int doubleSolenoidA = 0;
+  public static final int doubleSolenoidB = 1;
+
 }

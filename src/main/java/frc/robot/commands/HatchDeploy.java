@@ -13,11 +13,11 @@ import frc.robot.Robot;
 /**
  * Add your docs here.
  */
-public class TimedHatchDeploy extends TimedCommand {
+public class HatchDeploy extends TimedCommand {
   /**
    * Add your docs here.
    */
-  public TimedHatchDeploy() {
+  public HatchDeploy() {
     super(0.5);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
