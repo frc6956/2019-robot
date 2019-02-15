@@ -14,7 +14,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.HatchDeploy;
 
 /**
- * Add your docs here.
+ * Controls the hatch system for the robot
  */
 public class HatchHandler extends Subsystem {
   DoubleSolenoid doubleSolenoid = new DoubleSolenoid(RobotMap.doubleSolenoidA, RobotMap.doubleSolenoidB);
@@ -30,6 +30,9 @@ public class HatchHandler extends Subsystem {
     setDefaultCommand(new HatchDeploy());
   }
 
+  /**
+   * Pushes out the Hatch
+   */
   public void open() {
     if (doubleSolenoid.get() != DoubleSolenoid.Value.kReverse) {
 			doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
@@ -39,13 +42,16 @@ public class HatchHandler extends Subsystem {
 		}
   }
 
-  public void close() {
+  /**
+   * Brings the Pneumatics back in
+   */
+  /*public void close() {
     if (doubleSolenoid.get() != DoubleSolenoid.Value.kForward) {
 			doubleSolenoid.set(DoubleSolenoid.Value.kForward);
 			times_closed++;
 			SmartDashboard.putNumber("Times Closed", times_closed);
 			SmartDashboard.putString("Grabber State", "Closed");
 		}
-  }
+  }*/
   
 }

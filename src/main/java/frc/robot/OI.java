@@ -37,7 +37,6 @@ public class OI {
   public OI() {
     Button button1 = new JoystickButton(driver, 1);
     button1.whileHeld(new AutoAlign());
-    
   }
 
   
