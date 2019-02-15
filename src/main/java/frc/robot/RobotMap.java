@@ -16,22 +16,24 @@ package frc.robot;
 public class RobotMap {
   
   //USB
-  public static final int driverController = 0;
-  public static final int operatorController = 1;
-  public static final int driverControllerLeft = 2;
-  public static final int driverControllerRight = 3;
+    public static final int driverController = 0;
+    public static final int operatorController = 1;
+    public static final int driverControllerLeft = 2;
+    public static final int driverControllerRight = 3;
 
-  // Roborio map of Digital Inputs
-  public static final int lineSensorRight = 1;
-  public static final int lineSensorLeft = 0;
-
+  //CAN
+  
 
   // PCM
-  public static final int doubleSolenoidA = 0;
-  public static final int doubleSolenoidB = 1;
+    public static final int doubleSolenoidA = 0;
+    public static final int doubleSolenoidB = 1;
 
   //PWM
-  public static final int cargoHandlerWheels = 0;
-  public static final int cargoHandlerArm = 1;
+    public static final int cargoHandlerWheels = 0;
+    public static final int cargoHandlerArm = 1;
 
+  //Analog Ports
+   public static final int lineSensorRight = 1;
+   public static final int lineSensorLeft = 0;
+ 
 }
