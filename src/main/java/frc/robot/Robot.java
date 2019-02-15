@@ -39,6 +39,7 @@ public class Robot extends TimedRobot {
   public static Compressor compressor = new Compressor();
   public static CargoHandler cargoHandler = new CargoHandler();
   public static HatchHandler hatchHandler = new HatchHandler();
+  public static Arm arm = new Arm();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

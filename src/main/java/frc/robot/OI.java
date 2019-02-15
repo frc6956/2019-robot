@@ -141,6 +141,10 @@ public class OI {
   public double getCargoSpeed() {
     return operator.getY(Hand.kLeft);
   }
+
+  public double getArmSpeed() {
+    return -operator.getY(Hand.kRight);
+  }
   
   public void deployHatch() {
     operator.getYButtonPressed();
