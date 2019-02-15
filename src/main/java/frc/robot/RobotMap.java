@@ -22,7 +22,12 @@ public class RobotMap {
     public static final int driverControllerRight = 3;
 
   //CAN
-  
+    public static final int leftDriveMotor = 0;
+    public static final int leftDriveSPX1 = 1;
+    public static final int leftDriveSPX2 = 2;
+    public static final int rightDriveMotor = 3;
+    public static final int rightDriveSPX1 = 4;
+    public static final int rightDriveSPX2 = 5;
 
   // PCM
     public static final int doubleSolenoidA = 0;

@@ -28,7 +28,6 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public String name = "Charlie";
 
   public static OI m_oi;
   public static Drivetrain drivetrain;
@@ -51,17 +50,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
-    switch(name) {
-      case "Tempest":
-        drivetrain = new DrivetrainTempest();
-        gyro = new GyroPidgeon();
-        break;
-      case "Charlie":
-      default:
-        drivetrain = new DrivetrainCharlie();
-        gyro = new GyroNavX();
-        break;
-    }
     m_oi = new OI();
 
     m_chooser.setDefaultOption("Drive Distance", new DriveDistance(30));

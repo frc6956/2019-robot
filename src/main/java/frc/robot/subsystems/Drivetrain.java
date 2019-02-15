@@ -7,18 +7,47 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RobotMap;
 import frc.robot.commands.TeleopDrive;
 
 /**
  * Drivetrain
  */
-public abstract class Drivetrain extends Subsystem {
+public class Drivetrain extends Subsystem {
+  private final double ticksPerInch = 4096 / (6 * Math.PI);
   private final double speedLimit = 0.8;
+  private DifferentialDrive m_drive;
+  private WPI_TalonSRX m_leftSRX;
+  private WPI_TalonSRX m_rightSRX;
 
-  protected DifferentialDrive m_drive;
+  public Drivetrain() {
+    m_leftSRX = new WPI_TalonSRX(RobotMap.leftDriveMotor);
+    WPI_VictorSPX m_leftSPX1 = new WPI_VictorSPX(RobotMap.leftDriveSPX1);
+    WPI_VictorSPX m_leftSPX2 = new WPI_VictorSPX(RobotMap.leftDriveSPX2);
+    
+    m_rightSRX = new WPI_TalonSRX(RobotMap.rightDriveMotor);
+    WPI_VictorSPX m_rightSPX1 = new WPI_VictorSPX(RobotMap.rightDriveSPX1);
+    WPI_VictorSPX m_rightSPX2 = new WPI_VictorSPX(RobotMap.rightDriveSPX2);
+    
+    m_drive = new DifferentialDrive(m_leftSRX, m_rightSRX);
+    m_leftSPX1.follow(m_leftSRX);
+    m_leftSPX2.follow(m_leftSRX);
+    m_rightSPX1.follow(m_rightSRX);
+    m_rightSPX2.follow(m_rightSRX);
+
+    m_leftSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+    m_leftSRX.setSensorPhase(true);
+    m_rightSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
+
+  }
 
   private double zeroDistance = 0;
   private boolean reverse = false;
@@ -30,6 +59,7 @@ public abstract class Drivetrain extends Subsystem {
   public void initDefaultCommand() {
     setDefaultCommand(new TeleopDrive());
   }
+  
 
   /**
    * Sets Tank Drive and Speed
@@ -93,6 +123,9 @@ public abstract class Drivetrain extends Subsystem {
    * gets the total distance travelled
    * @return
    */
-  protected abstract double getRawDistanceTravelled();
-
+  protected double getRawDistanceTravelled() {
+    double total = m_leftSRX.getSelectedSensorPosition(0) / ticksPerInch;
+    total += m_rightSRX.getSelectedSensorPosition(0) / ticksPerInch;
+    return (total / 2);
+  }
 }
