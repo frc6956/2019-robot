@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
   public static Drivetrain drivetrain;
   public static Gyro gyro;
   public static LineSensors lineSensors = new LineSensors();
-  public static Arduino arduino = new Arduino();
+  public static Arduino arduino;// = new Arduino();
   public static PowerDistributionPanel pdp = new PowerDistributionPanel();
   public static Compressor compressor = new Compressor();
   public static CargoHandler cargoHandler = new CargoHandler();
@@ -50,16 +50,19 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
+    drivetrain = new Drivetrain();
+    gyro = new GyroPidgeon();
     m_oi = new OI();
 
     m_chooser.setDefaultOption("Drive Distance", new DriveDistance(30));
     m_chooser.addOption("Do nothing", null);
     SmartDashboard.putData("Auto mode", m_chooser);
 
-    CameraServer.getInstance().startAutomaticCapture();
+    //CameraServer.getInstance().startAutomaticCapture();
 
     pdp.clearStickyFaults();
     compressor.clearAllPCMStickyFaults();
+    SmartDashboard.putData("PDP", pdp);
   }
 
   /**
@@ -72,8 +75,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-	sendLineSensor();
-  SmartDashboard.putNumber("gyro", gyro.getAngle());
+	  sendLineSensor();
+    SmartDashboard.putNumber("gyro", gyro.getAngle());
   }
 
   /**

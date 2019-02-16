@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.AutoAlign;
+import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -36,7 +36,7 @@ public class OI {
 
   public OI() {
     Button button1 = new JoystickButton(driver, 1);
-    button1.whileHeld(new AutoAlign());
+    button1.whenPressed(new HatchDeploy());
   }
 
   
@@ -139,7 +139,7 @@ public class OI {
   }
   
   public double getCargoSpeed() {
-    return operator.getY(Hand.kLeft);
+    return -operator.getY(Hand.kLeft);
   }
 
   public double getArmSpeed() {

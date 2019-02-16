@@ -11,7 +11,6 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,7 +22,7 @@ import frc.robot.commands.TeleopDrive;
  */
 public class Drivetrain extends Subsystem {
   private final double ticksPerInch = 4096 / (6 * Math.PI);
-  private final double speedLimit = 0.8;
+  private final double speedLimit = 1.0;
   private DifferentialDrive m_drive;
   private WPI_TalonSRX m_leftSRX;
   private WPI_TalonSRX m_rightSRX;
