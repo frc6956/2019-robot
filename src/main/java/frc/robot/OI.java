@@ -143,7 +143,7 @@ public class OI {
   }
 
   public double getArmSpeed() {
-    return -operator.getY(Hand.kRight);
+    return operator.getY(Hand.kRight);
   }
   
   public void deployHatch() {
