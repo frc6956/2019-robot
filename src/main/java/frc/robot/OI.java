@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.triggers.XboxAButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -35,11 +36,11 @@ public class OI {
 
 
   public OI() {
-    Button button1 = new JoystickButton(driver, 1);
-    button1.whenPressed(new HatchDeploy());
+    Button hatchButton = new XboxAButton(operator);
+    hatchButton.whenPressed(new HatchDeploy());
+    hatchButton.close();
   }
 
-  
   public double getTankLeft() {
     if (isJoystick) {
       // Left joystick Y
