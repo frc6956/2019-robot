@@ -10,6 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+/**
+ * Shoots cargo
+ */
 public class TeleopCargo extends Command {
   public TeleopCargo() {
     // Use requires() here to declare subsystem dependencies

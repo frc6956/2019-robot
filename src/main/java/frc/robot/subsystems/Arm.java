@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.TeleopArm;
 
 /**
- * Add your docs here.
+ * Arm for the CargoHandler
  */
 public class Arm extends Subsystem {
   // Put methods for controlling this subsystem
