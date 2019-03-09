@@ -24,10 +24,10 @@ public class OI {
   // if is tank is false use arcade
   private boolean isTank = false;
   // if arcade enabled and this is true split X and Y
-  private boolean isSplit = false;
+  private boolean isSplit = true;
   // if a joystick button has been pressed this will become true
   // if false xbox controller is enabled
-  private boolean isJoystick = false;
+  private boolean isJoystick = true;
 
   private XboxController driver = new XboxController(RobotMap.driverController);
   private Joystick driverLeft = new Joystick(RobotMap.driverControllerLeft);
@@ -88,7 +88,7 @@ public class OI {
   public boolean getIsTank() {
     // xbox buttons
     // xbox tank drive
-    if (driver.getXButtonReleased()) {
+    /*if (driver.getXButtonReleased()) {
       isTank = true;
       isSplit = false;
       isJoystick = false;
@@ -123,12 +123,12 @@ public class OI {
       isTank = false;
       isSplit = false;
       isJoystick = true;
-    }
+    }*/
     return isTank;
   }
 
   public boolean invertDrive() {
-    if (driver.getBumperPressed(Hand.kLeft) && driver.getBumperPressed(Hand.kRight)) {
+    if (driverRight.getRawButtonReleased(1) || driverLeft.getRawButtonReleased(1)) {
       return true;
     } else {
       return false;
@@ -140,7 +140,7 @@ public class OI {
   }
   
   public double getCargoSpeed() {
-    return -operator.getY(Hand.kLeft);
+    return operator.getY(Hand.kLeft);
   }
 
   public double getArmSpeed() {

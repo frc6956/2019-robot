@@ -58,7 +58,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Do nothing", null);
     SmartDashboard.putData("Auto mode", m_chooser);
 
-    //CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture();
 
     pdp.clearStickyFaults();
     compressor.clearAllPCMStickyFaults();
