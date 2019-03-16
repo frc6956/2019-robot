@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
 import frc.robot.triggers.XboxAButton;
 
@@ -140,11 +141,17 @@ public class OI {
   }
   
   public double getCargoSpeed() {
-    return operator.getY(Hand.kLeft);
+    if(operator.getY(Hand.kRight) < 0) {
+      return operator.getY(Hand.kRight)*0.5;
+    }
+    return operator.getY(Hand.kRight);
   }
 
   public double getArmSpeed() {
-    return operator.getY(Hand.kRight);
+    double armSpeed = operator.getY(Hand.kLeft);
+    if(Math.abs(armSpeed) < 0.1) armSpeed = 0;
+    SmartDashboard.putNumber("Arm Speed", operator.getY(Hand.kLeft));
+    return armSpeed;
   }
   
   public void deployHatch() {
@@ -159,6 +166,15 @@ public class OI {
       return false;
     }
   }
+
+public boolean getDartUp() {
+	return operator.getBumperPressed(Hand.kRight);
+}
+
+public boolean getDartDown() {
+	return operator.getBumperPressed(Hand.kLeft);
+}
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
