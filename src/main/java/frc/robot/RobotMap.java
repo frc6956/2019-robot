@@ -34,11 +34,15 @@ public class RobotMap {
     public static final int doubleSolenoidB = 1;
 
   //PWM
-    public static final int cargoHandlerWheels = 0;
-    public static final int cargoHandlerArm = 1;
+    public static final int cargoHandlerArm = 0;
+    public static final int cargoHandlerWheels = 1;
+    public static final int dartHandlerLeft = 2;
+    public static final int dartHandlerRight = 3;
 
   //Analog Ports
    public static final int lineSensorRight = 1;
    public static final int lineSensorLeft = 0;
+   public static final int dartPOTLeft = 2;
+   public static final int dartPOTRight = 3;
  
 }
