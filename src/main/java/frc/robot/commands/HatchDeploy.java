@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 
 /**
- * Add your docs here.
+ * Deploys hatch mechanism
  */
 public class HatchDeploy extends TimedCommand {
   /**

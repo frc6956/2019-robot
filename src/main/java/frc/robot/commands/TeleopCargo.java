@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 /**
- * Shoots cargo
+ * Deploys the Cargo mechanism
  */
 public class TeleopCargo extends Command {
   public TeleopCargo() {
