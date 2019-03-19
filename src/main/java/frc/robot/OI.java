@@ -175,6 +175,10 @@ public boolean getDartDown() {
 	return operator.getBumperPressed(Hand.kLeft);
 }
 
+public double getDart() {
+  return operator.getTriggerAxis(Hand.kRight) - operator.getTriggerAxis(Hand.kLeft);
+}
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to

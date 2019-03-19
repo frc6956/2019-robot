@@ -39,8 +39,8 @@ public class Robot extends TimedRobot {
   public static CargoHandler cargoHandler = new CargoHandler();
   public static HatchHandler hatchHandler = new HatchHandler();
   public static Arm arm = new Arm();
-  public static Dart dartLeft = new Dart(RobotMap.dartHandlerLeft, RobotMap.dartPOTLeft);
-  public static Dart dartRight = new Dart(RobotMap.dartHandlerRight, RobotMap.dartPOTRight);
+  public static Dart dartLeft = new Dart(RobotMap.dartHandlerLeft, RobotMap.dartPOTLeft, 4.0, 1.0);
+  public static Dart dartRight = new Dart(RobotMap.dartHandlerRight, RobotMap.dartPOTRight, 4.0, 1.0);
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -77,7 +77,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-	  sendLineSensor();
+    sendLineSensor();
+    SmartDashboard.putNumber("Dart Left", dartLeft.getPosition());
+    SmartDashboard.putNumber("Dart Right", dartRight.getPosition());
    // SmartDashboard.putNumber("gyro", gyro.getAngle());
   }
 

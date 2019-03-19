@@ -32,7 +32,7 @@ public class Dart extends Subsystem{
         potentiometer = new AnalogInput(potLocation); 
         limitHigh = limHigh;
         limitLow = limLow;
-     }
+    }
 
 
     @Override
@@ -42,8 +42,14 @@ public class Dart extends Subsystem{
 
     public void setMotorSpeed(double speed) {
         if(speed>0 && potentiometer.getVoltage()<limitHigh || speed<0 && potentiometer.getVoltage()>limitLow) {
-        motor.setSpeed(speed);
+            motor.setSpeed(speed);
+        } else {
+            motor.setSpeed(0);
         }
+    }
+
+    public double getPosition() {
+        return potentiometer.getVoltage();
     }
 
     public void setLimitHigh(double limHigh) {

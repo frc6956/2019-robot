@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.subsystems.Dart;
 
 /**
  * Add your docs here.
@@ -25,14 +24,8 @@ public class DartDrive extends Command{
     }
 
     protected void execute() {
-        if(Robot.m_oi.getDartUp()) {
-            Robot.dartLeft.setMotorSpeed(Robot.dartLeft.speedLimit);
-            Robot.dartRight.setMotorSpeed(Robot.dartLeft.speedLimit);
-        }
-        else if(Robot.m_oi.getDartDown()) {
-            Robot.dartLeft.setMotorSpeed(-Robot.dartLeft.speedLimit);
-            Robot.dartRight.setMotorSpeed(-Robot.dartLeft.speedLimit);
-        }
+        Robot.dartLeft.setMotorSpeed(Robot.m_oi.getDart());
+        Robot.dartRight.setMotorSpeed(Robot.m_oi.getDart());
     }
 
     @Override
