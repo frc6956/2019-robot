@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
     drivetrain = new Drivetrain();
     gyro = new GyroPidgeon();
     m_oi = new OI();
-
+    
     m_chooser.setDefaultOption("Do nothing", null);
     m_chooser.addOption("Drive Distance", new DriveDistance(30));
     SmartDashboard.putData("Auto mode", m_chooser);
