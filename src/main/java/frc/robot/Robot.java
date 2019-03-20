@@ -56,8 +56,8 @@ public class Robot extends TimedRobot {
     gyro = new GyroPidgeon();
     m_oi = new OI();
 
-    m_chooser.setDefaultOption("Drive Distance", new DriveDistance(30));
-    m_chooser.addOption("Do nothing", null);
+    m_chooser.setDefaultOption("Do nothing", null);
+    m_chooser.addOption("Drive Distance", new DriveDistance(30));
     SmartDashboard.putData("Auto mode", m_chooser);
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -165,8 +165,8 @@ public class Robot extends TimedRobot {
       LnSensors[0] = lineSensors.getIsLeft();
       LnSensors[1] = lineSensors.getIsOnTarget();
       LnSensors[2] = lineSensors.getIsRight();
-    SmartDashboard.putBoolean("Left", LnSensors[0]);
+    /*SmartDashboard.putBoolean("Left", LnSensors[0]);
     SmartDashboard.putBoolean("Center", LnSensors[1]);
-    SmartDashboard.putBoolean("Right", LnSensors[2]);
+    SmartDashboard.putBoolean("Right", LnSensors[2]);*/
   }
 }
