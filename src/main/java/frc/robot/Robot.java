@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
   public static Arm arm = new Arm();
   public static Dart dartLeft = new Dart(RobotMap.dartHandlerLeft, RobotMap.dartPOTLeft, 4.0, 1.0);
   public static Dart dartRight = new Dart(RobotMap.dartHandlerRight, RobotMap.dartPOTRight, 4.0, 1.0);
+  public static PressureSensor pneumaticPressure = new PressureSensor(RobotMap.pressureSensor);
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -80,6 +81,7 @@ public class Robot extends TimedRobot {
     sendLineSensor();
     SmartDashboard.putNumber("Dart Left", dartLeft.getPosition());
     SmartDashboard.putNumber("Dart Right", dartRight.getPosition());
+    SmartDashboard.putNumber("Pressure", pneumaticPressure.getPressure());
    // SmartDashboard.putNumber("gyro", gyro.getAngle());
   }
 
