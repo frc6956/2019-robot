@@ -44,5 +44,6 @@ public class RobotMap {
    public static final int lineSensorLeft = 0;
    public static final int dartPOTLeft = 2;
    public static final int dartPOTRight = 3;
+   public static final int pressureSensor = 4;
  
 }
