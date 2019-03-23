@@ -40,11 +40,11 @@ public class RobotMap {
     public static final int dartHandlerRight = 3;
 
   //Analog Ports
-   public static final int lineSensorRight = 1;
-   public static final int lineSensorLeft = 0;
-   public static final int dartPOTLeft = 2;
-   public static final int dartPOTRight = 3;
-   public static final int pressureSensor = 4;
-   public static final int stringPot = 5;
+   //public static final int lineSensorRight = 1;
+  // public static final int lineSensorLeft = 0;
+   public static final int dartPOTLeft = 1;
+   public static final int dartPOTRight = 0;
+   public static final int pressureSensor = 3;
+   public static final int stringPot = 2;
  
 }
