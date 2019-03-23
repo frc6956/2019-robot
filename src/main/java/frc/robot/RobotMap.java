@@ -30,8 +30,8 @@ public class RobotMap {
     public static final int rightDriveSPX2 = 4;
 
   // PCM
-    public static final int doubleSolenoidA = 0;
-    public static final int doubleSolenoidB = 1;
+    public static final int doubleSolenoidA = 1;
+    public static final int doubleSolenoidB = 0;
 
   //PWM
     public static final int cargoHandlerArm = 0;

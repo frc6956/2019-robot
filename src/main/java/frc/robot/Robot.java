@@ -33,14 +33,14 @@ public class Robot extends TimedRobot {
   public static Drivetrain drivetrain;
   public static Gyro gyro;
   public static LineSensors lineSensors = new LineSensors();
-  public static Arduino arduino;// = new Arduino();
+  public static Arduino arduino = new Arduino();
   public static PowerDistributionPanel pdp = new PowerDistributionPanel();
   public static Compressor compressor = new Compressor();
   public static CargoHandler cargoHandler = new CargoHandler();
   public static HatchHandler hatchHandler = new HatchHandler();
   public static Arm arm = new Arm();
-  public static Dart dartLeft = new Dart(RobotMap.dartHandlerLeft, RobotMap.dartPOTLeft, 4.0, 1.0);
-  public static Dart dartRight = new Dart(RobotMap.dartHandlerRight, RobotMap.dartPOTRight, 4.0, 1.0);
+  public static Dart dartLeft = new Dart(RobotMap.dartHandlerLeft, RobotMap.dartPOTLeft, 4.0, 0.24);
+  public static Dart dartRight = new Dart(RobotMap.dartHandlerRight, RobotMap.dartPOTRight, 4.0, 0.49);
   public static PressureSensor pneumaticPressure = new PressureSensor(RobotMap.pressureSensor);
   public static StringPot armPosition = new StringPot(RobotMap.stringPot);
 

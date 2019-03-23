@@ -59,14 +59,12 @@ public class Arduino extends Subsystem {
   }
 
   private void write(String s) {
-    if (!connected) {
-      connected = connect();
-    }
-
-    try {
-      serial.writeString(s);
-    } catch(Exception e) {
-      connected = false;
+    if(connected) {
+      try {
+        serial.writeString(s);
+      } catch(Exception e) {
+        connected = false;
+      }
     }
   }
 
