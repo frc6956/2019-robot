@@ -39,8 +39,8 @@ public class Robot extends TimedRobot {
   public static CargoHandler cargoHandler = new CargoHandler();
   public static HatchHandler hatchHandler = new HatchHandler();
   public static Arm arm = new Arm();
-  public static Dart dartLeft = new Dart(RobotMap.dartHandlerLeft, RobotMap.dartPOTLeft, 4.0, 0.24);
-  public static Dart dartRight = new Dart(RobotMap.dartHandlerRight, RobotMap.dartPOTRight, 4.0, 0.49);
+  public static Dart dartLeft = new Dart(RobotMap.dartHandlerLeft, RobotMap.dartPOTLeft, 4.0, 0.29);
+  public static Dart dartRight = new Dart(RobotMap.dartHandlerRight, RobotMap.dartPOTRight, 4.0, 0.48);
   public static PressureSensor pneumaticPressure = new PressureSensor(RobotMap.pressureSensor);
   public static StringPot armPosition = new StringPot(RobotMap.stringPot);
 
