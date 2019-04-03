@@ -18,41 +18,33 @@ public class GyroPidgeon implements Gyro {
 	}
 	@Override
 	public void calibrate() {
-		// TODO Auto-generated method stub
-
 	}
 	/**
-	 * sets angle to zero
-	 * returns void
+	 * sets current angle to zero
 	 */
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
 		zeroAngle = getRawAngle();
 	}
-    /**
-	 * gets the current angle of the robot
-	 * returns a double vaule of the angle
+	/**
+	 * calculates current angle
+	 * returns a double value of the current angle
 	 */
 	@Override
 	public double getAngle() {
-		// TODO Auto-generated method stub
 		return getRawAngle() - zeroAngle;
 	}
 	/**
 	 * gets the rate of the robot
-	 * returns a double value
+	 * returns double value of the robot rate
 	 */
 	@Override
 	public double getRate() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void free() {
-		// TODO Auto-generated method stub
-
 	}
 	/**
 	 * calculates total rotation of robot

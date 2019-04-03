@@ -19,15 +19,12 @@ public class GyroNavX implements Gyro {
 	}
 	@Override
 	public void calibrate() {
-		// TODO Auto-generated method stub
-
 	}
 	/**
 	 * sets current angle to zero
 	 */
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
 		zeroAngle = getRawAngle();
 	}
 	/**
@@ -36,7 +33,6 @@ public class GyroNavX implements Gyro {
 	 */
 	@Override
 	public double getAngle() {
-		// TODO Auto-generated method stub
 		return getRawAngle() - zeroAngle;
 	}
 	/**
@@ -45,14 +41,11 @@ public class GyroNavX implements Gyro {
 	 */
 	@Override
 	public double getRate() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void free() {
-		// TODO Auto-generated method stub
-
 	}
 	/**
 	 * calculates total rotation of robot
@@ -63,7 +56,6 @@ public class GyroNavX implements Gyro {
 		roll = navX.getRoll();
 		return roll;
 	}
-
 
 	@Override
 	public void close() throws Exception {
