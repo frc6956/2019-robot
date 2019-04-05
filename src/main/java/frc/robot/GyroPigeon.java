@@ -4,16 +4,16 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 /**
- * This class provides an interface for the Pidgeon Gyro
+ * This class provides an interface for the Pigeon Gyro
  */
-public class GyroPidgeon implements Gyro {
+public class GyroPigeon implements Gyro {
 
 	private PigeonIMU pigeon = new PigeonIMU(0);;
 	double zeroAngle;
 	/**
 	 * this is the constructor of the class
 	 */
-	public GyroPidgeon() {
+	public GyroPigeon() {
 		reset();
 	}
 	@Override

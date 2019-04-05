@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
     drivetrain = new Drivetrain();
-    gyro = new GyroPidgeon();
+    gyro = new GyroPigeon();
     m_oi = new OI();
     
     m_chooser.setDefaultOption("Do nothing", null);
