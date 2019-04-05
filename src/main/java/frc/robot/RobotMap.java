@@ -14,38 +14,38 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  
-  //USB
-    public static final int driverController = 0;
-    public static final int operatorController = 1;
-    public static final int driverControllerLeft = 2;
-    public static final int driverControllerRight = 3;
 
-  //CAN
-    public static final int leftDriveMotor = 2;
-    public static final int leftDriveSPX1 = 1;
-    public static final int leftDriveSPX2 = 2;
-    public static final int rightDriveMotor = 1;
-    public static final int rightDriveSPX1 = 3;
-    public static final int rightDriveSPX2 = 4;
+  // USB
+  public static final int driverController = 0;
+  public static final int operatorController = 1;
+  public static final int driverControllerLeft = 2;
+  public static final int driverControllerRight = 3;
+
+  // CAN
+  public static final int leftDriveMotor = 2;
+  public static final int leftDriveSPX1 = 1;
+  public static final int leftDriveSPX2 = 2;
+  public static final int rightDriveMotor = 1;
+  public static final int rightDriveSPX1 = 3;
+  public static final int rightDriveSPX2 = 4;
 
   // PCM
-    public static final int doubleSolenoidA = 1;
-    public static final int doubleSolenoidB = 0;
+  public static final int doubleSolenoidA = 1;
+  public static final int doubleSolenoidB = 0;
 
-  //PWM
-    public static final int cargoHandlerArm = 0;
-    public static final int cargoHandlerWheels = 1;
-    public static final int dartHandlerLeft = 2;
-    public static final int dartHandlerRight = 3;
+  // PWM
+  public static final int cargoHandlerArm = 0;
+  public static final int cargoHandlerWheels = 1;
+  public static final int dartHandlerLeft = 2;
+  public static final int dartHandlerRight = 3;
 
-  //Analog Ports
-   public static final int dartPOTLeft = 1;
-   public static final int dartPOTRight = 0;
-   public static final int pressureSensor = 3;
-   public static final int stringPot = 2;
+  // Analog Ports
+  public static final int dartPOTLeft = 1;
+  public static final int dartPOTRight = 0;
+  public static final int pressureSensor = 3;
+  public static final int stringPot = 2;
 
-   //Digital Ports
-   public static final int lineSensorRight = 1;
-   public static final int lineSensorLeft = 0;
+  // Digital Ports
+  public static final int lineSensorRight = 1;
+  public static final int lineSensorLeft = 0;
 }

@@ -23,18 +23,24 @@ import frc.robot.commands.TeleopDrive;
 public class Drivetrain extends Subsystem {
   private final double ticksPerInch = 4096 / (6 * Math.PI);
   private final double speedLimit = 1.0;
+  private final double stallCurrent = 2.0;
+
   private DifferentialDrive m_drive;
   private WPI_TalonSRX m_leftSRX;
+  private WPI_VictorSPX m_leftSPX1;
+  private WPI_VictorSPX m_leftSPX2;
   private WPI_TalonSRX m_rightSRX;
+  private WPI_VictorSPX m_rightSPX1;
+  private WPI_VictorSPX m_rightSPX2;
 
   public Drivetrain() {
     m_leftSRX = new WPI_TalonSRX(RobotMap.leftDriveMotor);
-    WPI_VictorSPX m_leftSPX1 = new WPI_VictorSPX(RobotMap.leftDriveSPX1);
-    WPI_VictorSPX m_leftSPX2 = new WPI_VictorSPX(RobotMap.leftDriveSPX2);
+    m_leftSPX1 = new WPI_VictorSPX(RobotMap.leftDriveSPX1);
+    m_leftSPX2 = new WPI_VictorSPX(RobotMap.leftDriveSPX2);
     
     m_rightSRX = new WPI_TalonSRX(RobotMap.rightDriveMotor);
-    WPI_VictorSPX m_rightSPX1 = new WPI_VictorSPX(RobotMap.rightDriveSPX1);
-    WPI_VictorSPX m_rightSPX2 = new WPI_VictorSPX(RobotMap.rightDriveSPX2);
+    m_rightSPX1 = new WPI_VictorSPX(RobotMap.rightDriveSPX1);
+    m_rightSPX2 = new WPI_VictorSPX(RobotMap.rightDriveSPX2);
     
     m_drive = new DifferentialDrive(m_leftSRX, m_rightSRX);
     m_leftSPX1.follow(m_leftSRX);
@@ -45,23 +51,23 @@ public class Drivetrain extends Subsystem {
     m_leftSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
     m_leftSRX.setSensorPhase(true);
     m_rightSRX.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute);
-
   }
 
   private double zeroDistance = 0;
   private boolean reverse = false;
 
-  @Override
   /**
-   * What the robot does on default
+   * What the drivetrain does by default
    */
+  @Override
   public void initDefaultCommand() {
     setDefaultCommand(new TeleopDrive());
   }
   
-
   /**
-   * Sets Tank Drive and Speed
+   * Sets tank drive speed
+   * @param left Left speed
+   * @param right Right speed
    */
   public void setTankDrive(double left, double right) {
     if (reverse) {
@@ -73,8 +79,8 @@ public class Drivetrain extends Subsystem {
 
   /**
    * Sets Arcade Drive speed and rotation
-   * @param speed
-   * @param rotation
+   * @param speed Speed
+   * @param rotation Rotation
    */
   public void setArcadeDrive(double speed, double rotation) {
     rotation = rotation * speedLimit;
@@ -90,6 +96,7 @@ public class Drivetrain extends Subsystem {
 
   /**
    * Gets the distance travelled 
+   * @return Distance travelled since reset
    */
   public double getDistanceTravelled() {
     return getRawDistanceTravelled() - zeroDistance;
@@ -104,7 +111,7 @@ public class Drivetrain extends Subsystem {
 
   /**
    * Reverses the drivetrain
-   * @param reverse
+   * @param reverse Reverse the drivetrain
    */
   public void reverse(boolean reverse) {
     this.reverse = reverse;
@@ -112,15 +119,47 @@ public class Drivetrain extends Subsystem {
 
   /**
    * Checks if the drivetrain is reversed
-   * @return
+   * @return True if the drivetrain is reversed
    */
   public boolean isReversed() {
     return reverse;
   }
 
   /**
-   * gets the total distance travelled
-   * @return
+   * Gets the current of the left side
+   * @return Left side current
+   */
+  public double getLeftCurrent() {
+    return m_leftSRX.getOutputCurrent();
+  }
+
+  /**
+   * Gets the current of the right side
+   * @return Right side current
+   */
+  public double getRightCurrent() {
+    return m_rightSRX.getOutputCurrent();
+  }
+
+  /**
+   * Determines if the left side is stalled
+   * @return True if left side is stalled
+   */
+  public boolean isLeftStalled() {
+    return getLeftCurrent() > stallCurrent;
+  }
+
+  /**
+   * Determines if the right side is stalled
+   * @return True if right side is stalled
+   */
+  public boolean isRightStalled() {
+    return getRightCurrent() > stallCurrent;
+  }
+
+  /**
+   * Gets the total distance travelled
+   * @return Raw non-zeroed distance
    */
   protected double getRawDistanceTravelled() {
     double total = m_leftSRX.getSelectedSensorPosition(0) / ticksPerInch;
