@@ -18,7 +18,7 @@ public class HatchDeploy extends TimedCommand {
    * Add your docs here.
    */
   public HatchDeploy() {
-    super(0.5);
+    super(0.2);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.hatchHandler);

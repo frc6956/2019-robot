@@ -37,7 +37,7 @@ public class OI {
 
   public OI() {
     Button hatchButton = new XboxAButton(operator);
-    hatchButton.whenPressed(new HatchDeploy());
+    hatchButton.whileHeld(new HatchDeploy());
     hatchButton.close();
   }
 
@@ -151,19 +151,6 @@ public class OI {
     if(Math.abs(armSpeed) < 0.1) armSpeed = 0;
     SmartDashboard.putNumber("Arm Speed", operator.getY(Hand.kLeft));
     return armSpeed;
-  }
-  
-  public void deployHatch() {
-    operator.getYButtonPressed();
-  }
-
-  public boolean getIsHatchDeployed() {
-    if (operator.getBumperReleased(Hand.kLeft) || operator.getBumperReleased(Hand.kRight)) {
-      return true;
-    }
-    else {
-      return false;
-    }
   }
 
 public boolean getDartUp() {
