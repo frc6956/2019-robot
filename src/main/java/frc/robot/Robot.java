@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-import edu.wpi.first.cameraserver.CameraServer;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -42,6 +41,7 @@ public class Robot extends TimedRobot {
   public static Dart dartLeft = new Dart(RobotMap.dartHandlerLeft, RobotMap.dartPOTLeft, 4.0, 0.29);
   public static Dart dartRight = new Dart(RobotMap.dartHandlerRight, RobotMap.dartPOTRight, 4.0, 0.48);
   public static PressureSensor pneumaticPressure = new PressureSensor(RobotMap.pressureSensor);
+  public static Camera camera = new Camera();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -60,8 +60,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Do nothing", null);
     m_chooser.addOption("Drive Distance", new DriveDistance(30));
     SmartDashboard.putData("Auto mode", m_chooser);
-
-    CameraServer.getInstance().startAutomaticCapture();
+    
 
     pdp.clearStickyFaults();
     compressor.clearAllPCMStickyFaults();
